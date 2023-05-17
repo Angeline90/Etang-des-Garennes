@@ -18,7 +18,7 @@ class Cottage
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'cottages')]
+    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'cottages', cascade: ['persist'])]
     private Collection $owners;
 
     #[ORM\Column(length: 255)]
