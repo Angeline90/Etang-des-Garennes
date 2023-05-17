@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cottage index{% endblock %}
+
+{% block body %}
+    <h1>Cottage index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Capacity</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cottage in cottages %}
+            <tr>
+                <td>{{ cottage.id }}</td>
+                <td>{{ cottage.name }}</td>
+                <td>{{ cottage.description }}</td>
+                <td>{{ cottage.price }}</td>
+                <td>{{ cottage.capacity }}</td>
+                <td>
+                    <a href="{{ path('app_cottage_show', {'id': cottage.id}) }}">show</a>
+                    <a href="{{ path('app_cottage_edit', {'id': cottage.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_cottage_new') }}">Create new</a>
+{% endblock %}
