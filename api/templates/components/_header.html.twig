@@ -106,11 +106,16 @@
           <li>
             <a class="dropdown-item" href="#">Settings</a>
           </li>
-          {# {% if user.cottages | length > 0 %} #}
+          {% if is_granted('ROLE_ADMIN') or app.user.isOwner() %}
+          <li>
+            <a class="dropdown-item" href="{{path('app_cottage_new')}}">Créer un gite</a>
+          </li>
+          {# {% endif %} #}
+          {# {% if app.user.cottages | length > 0 %} #}
           <li>
             <a class="dropdown-item" href="{{path('app_cottage_index')}}">Mes gites</a>
           </li>
-          {# {% endif %} #}
+          {% endif %}
           <li>
             <a class="dropdown-item" href="#">Mes reservations</a>
           </li>

@@ -184,4 +184,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    public function isOwner(): bool
+    {
+        return $this->getCottages()->count() > 0;
+        
+    }
 }
