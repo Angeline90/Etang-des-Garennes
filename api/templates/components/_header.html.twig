@@ -1,62 +1,39 @@
 <header>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-      <a class="navbar-brand" href="#">
-        <img src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp" height="30" alt="MDB Logo" loading="lazy">
-      </a>
+	<!-- Navbar -->
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container">
+			<a class="navbar-brand" href="#">
+				<img src="{{ asset('build/logo/logo-black-transparent.png') }}" alt="Logo" loading="lazy" height="30">
+			</a>
 
-      <!-- Toggle button -->
-      <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+			<!-- Toggle button -->
+			<button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
 
-      <!-- Collapsible wrapper -->
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <!-- Navbar links -->
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Accueil</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Locations</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Evenements</a>
-          </li>
-          {# {% endif %} #}
-          {# {% if app.user.cottages | length > 0 %} #}
-          <li>
-            <a class="dropdown-item" href="{{path('app_cottage_index')}}">Mes gites</a>
-          </li>
-          {% endif %}
-          <li>
-            <a class="dropdown-item" href="#">Mes reservations</a>
-          </li>
-          <li>
-            <a class="dropdown-item" href="{{path('app_logout')}}">Logout</a>
-          </li>
-          {% else %}
-
-            <li>
-              <a class="dropdown-item" href="{{path('app_login')}}">Connexion</a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="{{path('app_register')}}">Inscription</a>
-            </li>
-
-      
-        {% endif %}
-        </ul>
-      </div>
-      <!-- Collapsible wrapper -->
-    </div>
-    <!-- Container wrapper -->
-  </nav>
+			<!-- Collapsible wrapper -->
+			<div
+				class="collapse navbar-collapse" id="navbarNav">
+				<!-- Navbar links -->
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="#">Accueil</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Locations</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Evenements</a>
+					</li>
+				</ul>
+			</div>
+			<!-- Collapsible wrapper -->
+		</div>
+		<!-- Container wrapper -->
+	</nav>
 </header>
-
 <style>
-  .navbar-nav .nav-link:hover {
-    color: #2D6A4F;
-  }
+	.navbar-nav .nav-link:hover {
+		color: #2D6A4F;
+	}
 </style>
