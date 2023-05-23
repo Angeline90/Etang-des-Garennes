@@ -49,28 +49,20 @@
         <i class="fas fa-shopping-cart"></i>
       </a>
 
-      <!-- Notifications -->
-      <div class="dropdown">
-        <a
-          class="text-reset me-3 dropdown-toggle hidden-arrow"
-          href="#"
-          id="navbarDropdownMenuLink"
-          role="button"
-          data-mdb-toggle="dropdown"
-          aria-expanded="false"
-        >
-          <i class="fas fa-bell"></i>
-          <span class="badge rounded-pill badge-notification bg-danger">1</span>
-        </a>
-        <ul
-          class="dropdown-menu dropdown-menu-end"
-          aria-labelledby="navbarDropdownMenuLink"
-        >
-          <li>
-            <a class="dropdown-item" href="#">Some news</a>
+      <!-- Toggle button -->
+      <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Collapsible wrapper -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <!-- Navbar links -->
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Accueil</a>
           </li>
-          <li>
-            <a class="dropdown-item" href="#">Another news</a>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Locations</a>
           </li>
           <li>
             <a class="dropdown-item" href="#">Something else here</a>
@@ -135,9 +127,14 @@
         {% endif %}
         </ul>
       </div>
+      <!-- Collapsible wrapper -->
     </div>
-    <!-- Right elements -->
-  </div>
-  <!-- Container wrapper -->
-</nav>
-<!-- Navbar --></header>
+    <!-- Container wrapper -->
+  </nav>
+</header>
+
+<style>
+  .navbar-nav .nav-link:hover {
+    color: #2D6A4F;
+  }
+</style>
