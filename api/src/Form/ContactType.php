@@ -25,7 +25,7 @@ class ContactType extends AbstractType
                     'minlength' => '2',
                     'maxlength' => '100',
                 ],
-                'label' => 'Nom / Prénom',
+                'label' => 'Nom et Prénom',
                 'attr' => [
                     'class' => 'form-label mt-4'
                 ],
