@@ -24,6 +24,29 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Evenements</a>
           </li>
+          {# {% endif %} #}
+          {# {% if app.user.cottages | length > 0 %} #}
+          <li>
+            <a class="dropdown-item" href="{{path('app_cottage_index')}}">Mes gites</a>
+          </li>
+          {% endif %}
+          <li>
+            <a class="dropdown-item" href="#">Mes reservations</a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="{{path('app_logout')}}">Logout</a>
+          </li>
+          {% else %}
+
+            <li>
+              <a class="dropdown-item" href="{{path('app_login')}}">Connexion</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="{{path('app_register')}}">Inscription</a>
+            </li>
+
+      
+        {% endif %}
         </ul>
       </div>
       <!-- Collapsible wrapper -->

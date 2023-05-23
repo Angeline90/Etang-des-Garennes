@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cottage{% endblock %}
+
+{% block body %}
+    <h1>Cottage</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ cottage.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ cottage.name }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ cottage.description }}</td>
+            </tr>
+            <tr>
+                <th>Price</th>
+                <td>{{ cottage.price }}</td>
+            </tr>
+            <tr>
+                <th>Capacity</th>
+                <td>{{ cottage.capacity }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_cottage_index') }}">back to list</a>
+
+    <a href="{{ path('app_cottage_edit', {'id': cottage.id}) }}">edit</a>
+
+    {{ include('cottage/_delete_form.html.twig') }}
+{% endblock %}

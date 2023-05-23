@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Cottage{% endblock %}
+
+{% block body %}
+    <h1>Create new Cottage</h1>
+
+    {{ include('cottage/_form.html.twig') }}
+
+    <a href="{{ path('app_cottage_index') }}">back to list</a>
+{% endblock %}
