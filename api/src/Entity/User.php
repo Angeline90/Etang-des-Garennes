@@ -14,7 +14,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
-#[ApiResource(mercure:true)]
+#[ApiResource(mercure: true)]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -40,7 +40,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToMany(targetEntity: Booking::class, mappedBy: 'clients')]
     private Collection $bookings;
 
-    #[ORM\ManyToMany(targetEntity: Cottage::class, mappedBy: 'owners')]
+    #[ORM\ManyToMany(targetEntity: Cottage::class, mappedBy: 'owners', cascade: ['persist'])]
     private Collection $cottages;
 
     public function __construct()
@@ -183,5 +183,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         return $this;
+    }
+
+    public function isOwner(): bool
+    {
+        return $this->getCottages()->count() > 0;
+        
     }
 }
