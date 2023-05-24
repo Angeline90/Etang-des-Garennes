@@ -10,6 +10,25 @@
 
         <h1>Formulaire de contact</h1>
 
-        {{ form(form) }}
+        {{ form_start(contactForm) }}
+            {{ form_row(contactForm.fullName, {
+                label: 'Nom et Prénom',
+                class: 'form-label mt-4'
+
+            }) }}
+            {{ form_row(contactForm.email, {
+                label: 'Adresse Email',
+                class: 'form-label mt-4'
+            }) }}
+            {{ form_row(contactForm.subject, {
+                label: 'Sujet',
+                class: 'form-label mt-4'
+            }) }}
+            {{ form_row(contactForm.message, {
+                label: 'Message',
+                class: 'form-label mt-4'
+            }) }}
+            <button type="submit" class="btn btn-primary mt-4">Envoyer</button>
+        {{ form_end(contactForm) }}
     </div>
 {% endblock %}
