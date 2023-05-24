@@ -20,8 +20,11 @@ class CottageController extends AbstractController
     #[Route('/', name: 'app_cottage_index', methods: ['GET'])]
     public function index(CottageRepository $cottageRepository): Response
     {
+        // dd($this->getUser()->getCottages()->getValues());
+        $cottages = $this->isGranted('ROLE_ADMIN')
+            ? $cottageRepository->findAll() : $this->getUser()->getCottages();
         return $this->render('cottage/index.html.twig', [
-            'cottages' => $cottageRepository->findAll(),
+            'cottages' => $cottages,
         ]);
     }
 
@@ -55,9 +58,11 @@ class CottageController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_cottage_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Cottage $cottage, CottageRepository $cottageRepository): Response
+    public function edit(Request $request, Cottage $cottage, CottageRepository $cottageRepository, UserRepository $userRepository): Response
     {
-        $form = $this->createForm(CottageType::class, $cottage);
+        $owners = $this->isGranted('ROLE_ADMIN')
+        ? $userRepository->findAll() : [$this->getUser()];
+        $form = $this->createForm(CottageType::class, $cottage, ['owners' => $owners]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

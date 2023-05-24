@@ -20,9 +20,9 @@
       <!-- Navbar brand -->
       <a class="navbar-brand mt-2 mt-lg-0" href="#">
         <img
-          src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
+          src="{{ asset('build/logo/logo-black-transparent.png') }}"
           height="15"
-          alt="MDB Logo"
+          alt="Logo"
           loading="lazy"
         />
       </a>
@@ -106,11 +106,16 @@
           <li>
             <a class="dropdown-item" href="#">Settings</a>
           </li>
-          {# {% if user.cottages | length > 0 %} #}
+          {% if is_granted('ROLE_ADMIN') or app.user.isOwner() %}
+          <li>
+            <a class="dropdown-item" href="{{path('app_cottage_new')}}">Créer un gite</a>
+          </li>
+          {# {% endif %} #}
+          {# {% if app.user.cottages | length > 0 %} #}
           <li>
             <a class="dropdown-item" href="{{path('app_cottage_index')}}">Mes gites</a>
           </li>
-          {# {% endif %} #}
+          {% endif %}
           <li>
             <a class="dropdown-item" href="#">Mes reservations</a>
           </li>

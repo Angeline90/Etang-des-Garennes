@@ -274,5 +274,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->phone = $phone;
 
         return $this;
+
+    public function isOwner(): bool
+    {
+        return $this->getCottages()->count() > 0;
+        
+
     }
 }
