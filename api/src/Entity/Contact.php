@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Metadata\ApiResource;
 use App\Repository\ContactRepository;
 use Doctrine\DBAL\Types\Types;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ContactRepository::class)]
@@ -17,15 +18,36 @@ class Contact
     private ?int $id = null;
 
     #[ORM\Column(length: 100, nullable: true)]
+    #[Assert\NotBlank(message: "Merci de renseigner votre nom et prénom")]
+    #[Assert\Length(
+        min: 2,
+        max: 100,
+        minMessage: 'La saisie {{ value }} est trop courte, elle ne devrait pas faire moins de {{ limit }} caractères',
+        maxMessage: 'La saisie {{ value }} est trop longue, elle ne devrait pas dépasser {{ limit }} caractères',
+    )]
     private ?string $fullName = null;
 
     #[ORM\Column(length: 180)]
+    #[Assert\NotBlank(message: 'Merci de renseigner votre e-mail')]
+    #[Assert\Email()]
+    #[Assert\Length(
+        min: 2,
+        max: 180,
+    )]
     private ?string $email = null;
 
     #[ORM\Column(length: 100, nullable: true)]
+    #[Assert\NotBlank(message: 'Merci de renseigner le sujet de votre message')]
+    #[Assert\Length(
+        min: 2,
+        max: 100,
+        minMessage: 'Le sujet {{ value }} est trop court, il ne devrait pas faire moins de {{ limit }} caractères',
+        maxMessage: 'Le sujet {{ value }} est trop long, il ne devrait pas dépasser {{ limit }} caractères',
+        )]
     private ?string $subject = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\NotBlank(message: 'Merci d\'écrire votre message')]
     private ?string $message = null;
 
     #[ORM\Column(nullable: true)]
