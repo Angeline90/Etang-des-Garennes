@@ -16,6 +16,7 @@ Encore
     .copyFiles({
         from: './assets/images',
     })
+
     /*
      * ENTRY CONFIG
      *
