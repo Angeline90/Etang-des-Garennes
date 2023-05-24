@@ -40,7 +40,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\NotBlank(message: 'Le mot de passe est requis')]
     #[Assert\Length(
         min:6,
-        max: 20,
+        max: 180,
         minMessage:'Le mot de passe doit être de  {{ limit }} caractères minimum',
         maxMessage: 'Le mot de passe doit être de  {{ limit }} caractères maximum',
     )]

@@ -37,20 +37,19 @@ class RegistrationController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
-            $hashedPassword = $userPasswordHasher->hashPassword(
-                $user,
-                $form->get('password')->getData()
+            $user->setPassword(
+                $userPasswordHasher->hashPassword(
+                    $user,
+                    $form->get('password')->getData()
+                )
             );
-            $user->setPassword($hashedPassword);
 
             $entityManager->persist($user);
             $entityManager->flush();
             return $this->redirectToRoute('app_login');
 
             // generate a signed url and email it to the user
-            $this->emailVerifier->sendEmailConfirmation(
-                'app_verify_email',
-                $user,
+            $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
                 (new TemplatedEmail())
                     ->from(new Address('support@etang-des-garennes.io', 'Etang des Garennes'))
                     ->to($user->getEmail())
