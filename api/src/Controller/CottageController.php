@@ -45,7 +45,7 @@ class CottageController extends AbstractController
             return $this->redirectToRoute('app_cottage_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('cottage/new.html.twig', [
+        return $this->render('cottage/new.html.twig', [
             'cottage' => $cottage,
             'form' => $form,
         ]);
@@ -73,7 +73,7 @@ class CottageController extends AbstractController
             return $this->redirectToRoute('app_cottage_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('cottage/edit.html.twig', [
+        return $this->render('cottage/edit.html.twig', [
             'cottage' => $cottage,
             'form' => $form,
         ]);
