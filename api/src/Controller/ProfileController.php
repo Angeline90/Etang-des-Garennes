@@ -10,11 +10,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route(path:'app/profile', name:'profile')]
+#[Route(path:'app/profile', name:'app_profile_')]
 class ProfileController extends AbstractController
 {
 
-    #[Route('/', name: 'app_profile_show', methods: ['GET'])]
+    #[Route('/', name: 'show', methods: ['GET'])]
     public function show(): Response
     {
         $user = $this->getUser();
@@ -23,7 +23,7 @@ class ProfileController extends AbstractController
         ]);
     }
 
-    #[Route('/edit', name: 'app_profile_edit', methods: ['GET', 'POST'])]
+    #[Route('/edit', name: 'edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, UserRepository $userRepository): Response
     {
         $user = $this->getUser();
@@ -42,13 +42,13 @@ class ProfileController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_profile_delete', methods: ['POST'])]
-    public function delete(Request $request, User $user, UserRepository $userRepository): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
-            $userRepository->remove($user, true);
-        }
+    // #[Route('/delete', name: 'delete', methods: ['POST'])]
+    // public function delete(Request $request, User $user, UserRepository $userRepository): Response
+    // {
+    //     if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
+    //         $userRepository->remove($user, true);
+    //     }
 
-        return $this->redirectToRoute('app_profile_index', [], Response::HTTP_SEE_OTHER);
-    }
+    //     return $this->redirectToRoute('app_profile_index', [], Response::HTTP_SEE_OTHER);
+    // }
 }
