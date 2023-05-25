@@ -42,7 +42,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         min:6,
         max: 50,
         minMessage:'Le mot de passe doit être de  {{ limit }} caractères minimum',
-        //maxMessage: 'Le mot de passe doit être de  {{ limit }} caractères maximum',
+        maxMessage: 'Le mot de passe doit être de  {{ limit }} caractères maximum',
     )]
     private ?string $password = null;
 
