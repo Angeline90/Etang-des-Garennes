@@ -25,12 +25,14 @@
         {% endblock %}
     </head>
     <body>
-    {% include 'components/_header.html.twig' %}
-        {% block body %}{% endblock %}
+    {% include 'components/_newHeader.html.twig' %}
+
+    {% block body %}{% endblock %}
+   
           <!-- MDB ESSENTIAL -->
-  <script type="text/javascript" src="/js/mdb.min.js"></script>
-  <!-- MDB PLUGINS -->
-  <script type="text/javascript" src="/plugins/js/all.min.js"></script>
-  <script type="text/javascript" src="/js/app.js"></script>
+    <script type="text/javascript" src="/js/mdb.min.js"></script>
+    <!-- MDB PLUGINS -->
+    <script type="text/javascript" src="/plugins/js/all.min.js"></script>
+    <script type="text/javascript" src="/js/app.js"></script>
     </body>
 </html>
