@@ -18,14 +18,5 @@ class HomeController extends AbstractController
             'controller_name' => 'HomeController',
         ]);
     }
-    #[
-        Route('/admin', name: 'admin'),
-        IsGranted('ROLE_ADMIN')
-    ]
-    public function admin(): Response
-    {
-        return $this->render('admin/index.html.twig', [
-            'controller_name' => 'HomeController',
-        ]);
-    }
+
 }

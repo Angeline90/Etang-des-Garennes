@@ -1,5 +1,12 @@
-{% extends "base.html.twig" %}
+{% extends 'base.html.twig' %}
+{% block title %}Page admin{% endblock %}
 
 {% block body %}
-<h1>Admin page </h1>
+<h1>Page admin</h1>
+<ul>
+    <li><a href="{{ path('app_cottage_index') }}">Voir les gîtes  </a></li>
+    <li><a href="{{ path('app_user_index') }}">  Voir les inscriptions  </a></li>
+    <li><a href="{{ path('app_cottage_index') }}">  Voir les réservations</a></li>
+<ul>
 {% endblock %}
+

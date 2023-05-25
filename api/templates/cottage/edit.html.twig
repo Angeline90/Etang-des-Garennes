@@ -3,11 +3,12 @@
 {% block title %}Edit Cottage{% endblock %}
 
 {% block body %}
-    <h1>Edit Cottage</h1>
+    <h1>Modification</h1>
 
-    {{ include('cottage/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('cottage/_form.html.twig', {'button_label': 'Mise à jour'}) }}
 
-    <a href="{{ path('app_cottage_index') }}">back to list</a>
+    <a href="{{ path('app_cottage_index') }}">retour à la liste</a>
+    <a href="{{ path('app_admin') }}">retour sur la page admin</a>
 
     {{ include('cottage/_delete_form.html.twig') }}
 {% endblock %}
