@@ -2,21 +2,24 @@
 
 namespace App\Controller;
 
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
-//on definit un parametre de route : 
 #[Route(path: '/app', name: 'app_')]
-class HomeController extends AbstractController
+class AdminController extends AbstractController
 {
-    #[Route('/', name: 'home')]
+    #[
+        Route('/admin', name: 'admin'),
+        IsGranted('ROLE_ADMIN')
+        ]
     public function index(): Response
     {
-        return $this->render('home/index.html.twig', [
-            'controller_name' => 'HomeController',
+        return $this->render('admin/index.html.twig', [
+            'controller_name' => 'AdminController',
         ]);
     }
-
+   
 }

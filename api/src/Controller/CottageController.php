@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Cottage;
+use App\Entity\User;
 use App\Form\CottageType;
 use App\Repository\CottageRepository;
 use App\Repository\UserRepository;
@@ -10,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[
     Route('/app/cottage'),
@@ -43,7 +45,7 @@ class CottageController extends AbstractController
             return $this->redirectToRoute('app_cottage_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('cottage/new.html.twig', [
+        return $this->render('cottage/new.html.twig', [
             'cottage' => $cottage,
             'form' => $form,
         ]);
@@ -71,7 +73,7 @@ class CottageController extends AbstractController
             return $this->redirectToRoute('app_cottage_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('cottage/edit.html.twig', [
+        return $this->render('cottage/edit.html.twig', [
             'cottage' => $cottage,
             'form' => $form,
         ]);
