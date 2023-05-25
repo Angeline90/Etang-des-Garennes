@@ -3,33 +3,47 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
+<div class="container">
     {% for flash_error in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
+    
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success mt-4">
+                {{ message }}
+            </div>
+        {% endfor %}
 
     <h1>Inscription</h1>
 
     {{ form_start(registrationForm) }}
         {{ form_row(registrationForm.name, {
             label:'Nom',
+            class: 'form-label mt-4'
         }) }}
         {{ form_row(registrationForm.firstname, {
             label:'Prénom',
+            class: 'form-label mt-4'
         }) }}
         {{ form_row(registrationForm.email, {
             label:'Email',
+            class: 'form-label mt-4'
         }) }}
         {{ form_row(registrationForm.password, {
-            label: 'Mot de passe'
+            label: 'Mot de passe',
+            class: 'form-label mt-4'
         }) }}
         {{ form_row(registrationForm.phone , {
             label:'Téléphone',
+            class: 'form-label mt-4'
         }) }}
         {{ form_row(registrationForm.adress , {
             label:'Adresse',
+            class: 'form-label mt-4'
         }) }}
         {# {{ form_row(registrationForm.agreeTerms) }} #}
 
-        <button type="submit" class="btn">S'enregistrer</button>
+        <button type="submit" class="btn btn-primary mt-4">S'enregistrer</button>
     {{ form_end(registrationForm) }}
+    </div>
 {% endblock %}
