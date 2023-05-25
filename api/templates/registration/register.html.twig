@@ -3,7 +3,9 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-<div class="container">
+<main class="my-5"> 
+<section class="registerForm py-5">
+    <div class="container d-flex flex-column align-items-center">
     {% for flash_error in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
@@ -14,7 +16,7 @@
             </div>
         {% endfor %}
 
-    <h1>Inscription</h1>
+    <h1 class="text-center mb-3">Inscription</h1>
 
     {{ form_start(registrationForm) }}
         {{ form_row(registrationForm.name, {
@@ -41,7 +43,9 @@
         }) }}
         {# {{ form_row(registrationForm.agreeTerms) }} #}
 
-        <button type="submit" class="btn btn-primary mt-4">S'enregistrer</button>
+        <button type="submit" class="btn-home mt-4">S'enregistrer</button>
     {{ form_end(registrationForm) }}
     </div>
+</section>
+</main>
 {% endblock %}

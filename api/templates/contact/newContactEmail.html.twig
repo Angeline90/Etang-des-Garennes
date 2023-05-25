@@ -3,9 +3,13 @@
 {% block title %}Nouveau message{% endblock %}
 
 {% block body %}
-    <h1>Nouveau message reçu de {{ contact.fullName }} :</h1>
-    <h3>Sujet : {{ contact.subject }}</h3>
-    <h4>Message :</h4>
-    <p>{{ contact.message }}</p>
-    <p>{{ contact.email }}</p>
+<main class="my-5">
+    <section class="newContactMail py-5">
+        <h1>Nouveau message reçu de {{ contact.fullName }} :</h1>
+        <h3>Sujet : {{ contact.subject }}</h3>
+        <h4>Message :</h4>
+        <p>{{ contact.message }}</p>
+        <p>{{ contact.email }}</p>
+    </section>
+</main>
 {% endblock %}
