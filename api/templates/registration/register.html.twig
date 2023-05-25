@@ -18,28 +18,26 @@
 
     {{ form_start(registrationForm) }}
         {{ form_row(registrationForm.name, {
-            label:'Nom',
-            class: 'form-label mt-4'
+            label:'Nom'
         }) }}
         {{ form_row(registrationForm.firstname, {
-            label:'Prénom',
-            class: 'form-label mt-4'
+            label:'Prénom'
         }) }}
         {{ form_row(registrationForm.email, {
-            label:'Email',
-            class: 'form-label mt-4'
+            label:'Email'
         }) }}
-        {{ form_row(registrationForm.password, {
+        {{ form_row(registrationForm.password.first, {
             label: 'Mot de passe',
-            class: 'form-label mt-4'
+        }) }}
+        {{ form_row(registrationForm.password.second, {
+            label: 'Confirmez votre mot de passe',
+
         }) }}
         {{ form_row(registrationForm.phone , {
-            label:'Téléphone',
-            class: 'form-label mt-4'
+            label:'Téléphone'
         }) }}
         {{ form_row(registrationForm.adress , {
-            label:'Adresse',
-            class: 'form-label mt-4'
+            label:'Adresse'
         }) }}
         {# {{ form_row(registrationForm.agreeTerms) }} #}
 
