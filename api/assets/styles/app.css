@@ -59,14 +59,17 @@ a p {
 .homeHeader h1, p, a {
     color: white;
 }
-
+  
 a:hover {
     color: #2D6A4F;
 }
 
 .arounded {
-    border-radius:100%;
-    width: 100%;
+    width: 70%;
+    position: relative;
+    top: 8%;
+    /* border-radius:100%;
+    width: 100%; */
 }
 
 .btn-home {
@@ -89,6 +92,7 @@ a:hover {
 .cottages a {
     color: white;
 }
+  
 
 
   
