@@ -18,19 +18,7 @@ class CottageType extends AbstractType
             ->add('name')
             ->add('description')
             ->add('price')
-            ->add('capacity')
-            ->add('owners', EntityType::class, [
-                // looks for choices from this entity
-                'class' => User::class,
-                'choices' => $options['owners'],
-
-                // uses the User.username property as the visible option string
-                'choice_label' => 'email',
-
-                // used to render a select box, check boxes or radios
-                'multiple' => true,
-                'expanded' => true,
-            ]);
+            ->add('capacity');
     }
 
     public function configureOptions(OptionsResolver $resolver): void
