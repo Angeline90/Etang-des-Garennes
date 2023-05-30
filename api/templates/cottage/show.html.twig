@@ -30,9 +30,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_cottage_index') }}">retour à la liste</a>
+    <a href="{{ path('app_cottage_index') }}">Retour à la liste</a>
 
-    <a href="{{ path('app_cottage_edit', {'id': cottage.id}) }}">changer</a>
+    <a href="{{ path('app_cottage_edit', {'id': cottage.id}) }}">Modifier</a>
 
     {{ include('cottage/_delete_form.html.twig') }}
 {% endblock %}

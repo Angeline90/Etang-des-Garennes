@@ -25,14 +25,14 @@
                 <td>{{ cottage.price }}</td>
                 <td>{{ cottage.capacity }}</td>
                 <td>
-                    <a href="{{ path('app_cottage_show', {'id': cottage.id}) }}">voir</a>
+                    <a href="{{ path('app_cottage_show', {'id': cottage.id}) }}">Voir</a>
                     <a>ou</a>
-                    <a href="{{ path('app_cottage_edit', {'id': cottage.id}) }}">modifier</a>
+                    <a href="{{ path('app_cottage_edit', {'id': cottage.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">pas d'enregistrements trouvés</td>
+                <td colspan="6">Pas d'enregistrements trouvés</td>
             </tr>
         {% endfor %}
         </tbody>
@@ -40,5 +40,5 @@
 
     <a href="{{ path('app_cottage_new') }}">Nouveau gîte</a>
     </br>
-    <a href="{{ path('app_admin') }}">Retour sur la page admin</a>
+    <a href="{{ path('app_admin') }}">Retour sur la page de gestion</a>
 {% endblock %}

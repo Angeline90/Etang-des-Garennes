@@ -67,9 +67,11 @@ a:hover {
 .arounded {
     width: 70%;
     position: relative;
-    top: 8%;
+    /* top: 8%; */
     /* border-radius:100%;
     width: 100%; */
+    aspect-ratio: 1/3;
+    object-fit: contain;
 }
 
 .btn-home {
