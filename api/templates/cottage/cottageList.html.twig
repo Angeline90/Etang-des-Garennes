@@ -7,34 +7,14 @@
 {% block body %}
 
 
-    <main id="homePage">
-        <section class="homeHeader bg-image p-5">
-        <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
-            <div class="container p-5 d-flex justify-content-evenly align-items-center h-100">
-                <div class="row">
-                    <div class="d-none d-sm-block col-md-8">
-                        <img class="arounded" src="{{ asset('build/logo/logo-green-bg-green-round.png') }}" class="card-img-top" alt="...">
-                    </div>
-                </div>
+    <main class="mt-5" id="cottageList">
 
-                <div class="row text-center">
-                    <div class="col-md-12 ps-5">
-                        <h1>Bienvenue à l'Etang des Garennes</h1>
-                        <p class="text-white pt-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="#" class="text-white btn-home">En savoir +</a>
-                    </div>
-                </div>
-               
-            </div>
-        </div>
-        </section>
-
-        <section class="cottages my-5">
+        <section class="cottages p-5">
             <div class="container text-center">
-                <h2>Nos chambres</h2>
+                <h1 >Nos chambres</h1>
 
                 <div class="row my-5">
-                  {% for cottage in cottages %}
+                   {% for cottage in cottages %}
                     <div class="col-lg-4 col-md-12 mb-4">
                         <div class="card" style="background-color: rgba(241,236,227, 0.8);">
                             <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
@@ -51,7 +31,9 @@
                             </div>
                         </div>
                     </div>
-                {% endfor %}
+                    {% endfor %}
+                </div>
+             
             </div>
 
         </section>
