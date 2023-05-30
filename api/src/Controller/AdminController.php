@@ -21,13 +21,5 @@ class AdminController extends AbstractController
             'controller_name' => 'AdminController',
         ]);
     }
-    // #[Route('/user', name: 'user', methods: ['GET'])]
-    // public function getUsers(UserRepository $userRepository): Response
-    // {
-    //     return $this->render('user/index.html.twig', [
-    //         'users' => $userRepository->findAll(),
-    //     ]);
-       
-    // }
    
 }
