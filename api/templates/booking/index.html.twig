@@ -11,8 +11,63 @@
 <div class="example-wrapper">
     <h1>Les réservations</h1>
 
-    <div class="calendar" data-mdb-monday="true" </div>
+    <div id ="calendar" class="calendar" data-mdb-monday="true" </div>
 
    
 </div>
+
+<script>
+const calendarElement = document.getElementById('calendar');
+ calendarElement.addEventListener('click',(e)=>{
+//   calendarElement.addEventListener('editEvent.mdb.calendar',(e)=>{
+    alert('ya eu un click');
+//   alert(e.color.background + " / " + e.color.foreground );
+//    alert(e.start.date + " / " + e.start.datetime + " / " + e.start.datetime );
+//   alert(e.end.date + " / " + e.end.datetime + " / " + e.end.datetime);
+//   alert(e.description);
+//   alert(e.summary);
+})
+    // async function cleRelachee(evt){         
+    //     const response = await fetch(`https://localhost/greetings?page=1&name=${evt.target.value}`);
+    //     const jsonData = await response.json();
+    //     console.log(jsonData); 
+    //     if (jsonData["hydra:totalItems"]>0){
+    //         console.log('Afficher les resultats dans le front')
+    //         const element = document.getElementById('demo-div')
+    //         viderContainer(element)
+    //         jsonData["hydra:member"].forEach(function(item) {
+    //             const innerElement = document.createElement('span')
+    //             innerElement.setAttribute('class','text-success')
+    //             innerElement.setAttribute('id',`item-${item.id}`)
+    //             innerElement.append(item.name)
+    //             element.append(innerElement) 
+    //             element.append(document.createElement('br'))
+    //         });
+
+    //     }else {
+    //         console.log('Aucun élément à afficher')
+    //         const element = document.getElementById('demo-div')
+    //         viderContainer(element)
+    //         const innerElement = document.createElement('span')
+    //         innerElement.setAttribute('class','text-danger')
+    //         innerElement.append('Aucun élément à afficher')
+    //         element.append(innerElement) 
+    //     }
+    // }
+    //     function viderContainer(myNode){
+    //         while (myNode.firstChild) {
+    //             myNode.removeChild(myNode.lastChild);
+    //         }
+    //     }
+    // const evtSource = new EventSource("https://localhost/.well-known/mercure?topic=https://localhost/greetings/7");
+    // evtSource.onmessage = (event) => {
+    //     console.log(JSON.parse(event.data));
+    //     const span = document.getElementById('item-7')
+    //     if (span) {
+    //         span.innerText = JSON.parse(event.data).name;
+    //     }
+
+    // };
+
+</script>
 {% endblock %}
