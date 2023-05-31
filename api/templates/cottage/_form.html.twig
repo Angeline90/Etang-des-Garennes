@@ -4,46 +4,56 @@
         <div class="class-errors">
             {{ form_errors(form)}}
         </div>
-        <form>
-            <!-- 2 column grid layout with text inputs for the first and last names -->
-            <div class="row mb-4">
-                <div class="col">
-                    <div class="form-outline">
-                        <input type="text" id="form6Example2" class="form-control" />
-                        <label class="form-label" for="form6Example2">{{ form_row(form.name, {
-                            label: 'Nom'
-                        }) }}</label>
-                    </div>
+        <!-- 2 column grid layout with text inputs for the first and last names -->
+        <div class="row mb-4">
+            <div class="col">
+                <div class="form-outline">
+                    {{ form_widget(form.name, {
+                        'attr': {
+                            'class': 'form-control',
+                            'id': 'name'
+                        }
+                    }) }}
+                    <label class="form-label" for="name">Nom</label>
                 </div>
             </div>
+        </div>
 
-            <!-- Text input -->
-            <div class="form-outline mb-4">
-                <textarea id="form6Example4" class="form-control" /></textarea>
-                <label class="form-label" for="form6Example4">{{ form_row(form.description,{
-                    label: 'Description'
-                }) }}</label>
-            </div>
+        <!-- Text input -->
+        <div class="form-outline mb-4">
+            {{ form_widget(form.description, {
+                'attr': {
+                    'class': 'form-control',
+                    'id': 'description'
+                }
+            }) }}
+            <label class="form-label" for="description">Description</label>
+        </div>
 
-            <!-- Number input -->
-            <div class="form-outline mb-4">
-                <input type="number" id="form6Example4" class="form-control" />
-                <label class="form-label" for="form6Example4">{{ form_row(form.price,{
-                    label: 'Prix'
-                }) }}</label>
-            </div>
+        <!-- Number input -->
+        <div class="form-outline mb-4">
+            {{ form_widget(form.price, {
+                'attr': {
+                    'class': 'form-control',
+                    'id': 'price'
+                }
+            }) }}
+            <label class="form-label" for="price">Prix</label>
+        </div>
 
-            <!-- Number input -->
-            <div class="form-outline mb-4">
-                <input type="number" id="form6Example5" class="form-control" />
-                <label class="form-label" for="form6Example5">{{ form_row(form.capacity, {
-                    label: 'Capacité'
-                }) }}</label>
-            </div>
+        <!-- Number input -->
+        <div class="form-outline mb-4">
+            {{ form_widget(form.capacity, {
+                'attr': {
+                    'class': 'form-control',
+                    'id': 'capacity'
+                }
+            }) }}
+            <label class="form-label" for="capacity">Capacité</label>
+        </div>
 
-            <!-- Submit button -->
-            <button type="submit" class="btn btn-primary btn-block mb-4">{{ button_label|default('Enregistrer') }}</button>
-        </form>
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block mb-4">{{ button_label|default('Enregistrer') }}</button>
         {{ form_end(form) }}
     </div>
 </div>

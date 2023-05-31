@@ -4,55 +4,69 @@
         <div class="class-errors">
             {{ form_errors(form)}}
         </div>
-        <form>
-            <!-- 2 column grid layout with text inputs for the first and last names -->
-            <div class="row mb-4">
-                <div class="col">
-                    <div class="form-outline">
-                        <input type="text" id="form6Example1" class="form-control"/>
-                        <label class="form-label" for="form6Example1">{{ form_row(form.firstname, {
-                            label: 'Prénom'
-                        }) }}</label>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-outline">
-                        <input type="text" id="form6Example2" class="form-control" />
-                        <label class="form-label" for="form6Example2">{{ form_row(form.name, {
-                            label: 'Nom'
-                        }) }}</label>
-                    </div>
+
+        <!-- 2 column grid layout with text inputs for the first and last names -->
+        <div class="row mb-4">
+            <div class="col">
+                <div class="form-outline">
+                    {{ form_widget(form.firstname, {
+                        'attr': {
+                            'class': 'form-control',
+                            'id': 'firstname'
+                        }
+                    }) }}
+                    <label class="form-label" for="firstname">Prénom</label>
                 </div>
             </div>
-
-            <!-- Text input -->
-            <div class="form-outline mb-4">
-                <input type="text" id="form6Example4" class="form-control" />
-                <label class="form-label" for="form6Example4">{{ form_row(form.adress,{
-                    label: 'Adresse'
-                }) }}</label>
+            <div class="col">
+                <div class="form-outline">
+                    {{ form_widget(form.name, {
+                        'attr': {
+                            'class': 'form-control',
+                            'id': 'name'
+                        }
+                    }) }}
+                    <label class="form-label" for="name">Nom</label>
+                </div>
             </div>
+        </div>
 
-            <!-- Email input -->
-            <div class="form-outline mb-4">
-                <input type="email" id="form6Example5" class="form-control" />
-                <label class="form-label" for="form6Example5">{{ form_row(form.email, {
-                    label: 'Email'
-                }) }}</label>
-            </div>
+        <!-- Text input -->
+        <div class="form-outline mb-4">
+            {{ form_widget(form.adress, {
+                'attr': {
+                    'class': 'form-control',
+                    'id': 'adress'
+                }
+            }) }}
+            <label class="form-label" for="adress">Adresse</label>
+        </div>
 
-            <!-- Number input -->
-            <div class="form-outline mb-4">
-                <input type="number" id="form6Example6" class="form-control" />
-                <label class="form-label" for="form6Example6">{{ form_row(form.phone, {
-                    label: 'Téléphone'
-                })}}</label>
-            </div>
+        <!-- Email input -->
+        <div class="form-outline mb-4">
+            {{ form_widget(form.email, {
+                'attr': {
+                    'class': 'form-control',
+                    'id': 'email'
+                }
+            }) }}
+            <label class="form-label" for="email">Email</label>
+        </div>
 
-            <!-- Submit button -->
-            <button type="submit" class="btn btn-primary btn-block mb-4">{{ button_label|default('Sauvegarder') }}</button>
-        </form>
+        <!-- Number input -->
+        <div class="form-outline mb-4">
+            {{ form_widget(form.phone, {
+                'attr': {
+                    'class': 'form-control',
+                    'id': 'phone'
+                }
+            }) }}
+            <label class="form-label" for="phone">Téléphone</label>
+        </div>
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block mb-4">{{ button_label|default('Sauvegarder') }}</button>
+
         {{ form_end(form) }}
     </div>
 </div>
-

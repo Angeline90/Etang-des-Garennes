@@ -24,71 +24,90 @@
                         <div class="class-errors">
                             {{ form_errors(registrationForm)}}
                         </div>
-                        <form>
-                            <!-- 2 column grid layout with text inputs for the first and last names -->
-                            <div class="row mb-4">
-                                <div class="col">
-                                    <div class="form-outline">
-                                        <input type="text" id="form6Example1" class="form-control"/>
-                                        <label class="form-label" for="form6Example1">{{ form_row(registrationForm.firstname, {
-                                            label: 'Prénom'
-                                        }) }}</label>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="form-outline">
-                                        <input type="text" id="form6Example2" class="form-control" />
-                                        <label class="form-label" for="form6Example2">{{ form_row(registrationForm.name, {
-                                            label: 'Nom'
-                                        }) }}</label>
-                                    </div>
+
+                        <!-- 2 column grid layout with text inputs for the first and last names -->
+                        <div class="row mb-4">
+                            <div class="col">
+                                <div class="form-outline">
+                                    {{ form_widget(registrationForm.firstname, {
+                                        'attr': {
+                                            'class': 'form-control',
+                                            'id': 'firstname'
+                                        }
+                                    }) }}
+                                    <label class="form-label" for="firstname">Prénom</label>
                                 </div>
                             </div>
-
-                            <!-- Email input -->
-                            <div class="form-outline mb-4">
-                                <input type="email" id="form6Example5" class="form-control" />
-                                <label class="form-label" for="form6Example5">{{ form_row(registrationForm.email, {
-                                    label: 'Email'
-                                }) }}</label>
+                            <div class="col">
+                                <div class="form-outline">
+                                    {{ form_widget(registrationForm.name, {
+                                        'attr': {
+                                            'class': 'form-control',
+                                            'id': 'name'
+                                        }
+                                    }) }}
+                                    <label class="form-label" for="name">Nom</label>
+                                </div>
                             </div>
+                        </div>
 
-                            <!-- password input -->
-                            <div class="form-outline mb-4">
-                                <input type="password" id="form6Example4" class="form-control" />
-                                <label class="form-label" for="form6Example4">{{ form_row(registrationForm.password.first,{
-                                    label: 'Mot de passe'
-                                }) }}</label>
-                            </div>
+                        <!-- Email input -->
+                        <div class="form-outline mb-4">
+                            {{ form_widget(registrationForm.email, {
+                                'attr': {
+                                    'class': 'form-control',
+                                    'id': 'email'
+                                }
+                            }) }}
+                            <label class="form-label" for="email">Email</label>
+                        </div>
 
+                        <!-- password input -->
+                        <div class="form-outline mb-4">
+                            {{ form_widget(registrationForm.password.first, {
+                                'attr': {
+                                    'class': 'form-control',
+                                    'id': 'password'
+                                }
+                            }) }}
+                            <label class="form-label" for="password">Mot de passe</label>
+                        </div>
 
-                            <!-- password input -->
-                            <div class="form-outline mb-4">
-                                <input type="password" id="form6Example4" class="form-control" />
-                                <label class="form-label" for="form6Example4">{{ form_row(registrationForm.password.second,{
-                                    label: 'Confirmer le mot de passe'
-                                }) }}</label>
-                            </div>
+                        <!-- password input -->
+                        <div class="form-outline mb-4">
+                            {{ form_widget(registrationForm.password.second, {
+                                'attr': {
+                                    'class': 'form-control',
+                                    'id': 'password2'
+                                }
+                            }) }}
+                            <label class="form-label" for="password2">Confirmer le mot de passe</label>
+                        </div>
 
-                            <!-- Text input -->
-                            <div class="form-outline mb-4">
-                                <textarea id="form6Example4" class="form-control" /></textarea>
-                                <label class="form-label" for="form6Example4">{{ form_row(registrationForm.adress,{
-                                    label: 'Adresse'
-                                }) }}</label>
-                            </div>
+                        <!-- Text input -->
+                        <div class="form-outline mb-4">
+                            {{ form_widget(registrationForm.adress, {
+                                'attr': {
+                                    'class': 'form-control',
+                                    'id': 'adress'
+                                }
+                            }) }}
+                            <label class="form-label" for="adress">Adresse</label>
+                        </div>
 
-                            <!-- Number input -->
-                            <div class="form-outline mb-4">
-                                <input type="text" id="form6Example6" class="form-control" />
-                                <label class="form-label" for="form6Example6">{{ form_row(registrationForm.phone, {
-                                    label: 'Téléphone'
-                                })}}</label>
-                            </div>
+                        <!-- Number input -->
+                        <div class="form-outline mb-4">
+                            {{ form_widget(registrationForm.phone, {
+                                'attr': {
+                                    'class': 'form-control',
+                                    'id': 'phone'
+                                }
+                            }) }}
+                            <label class="form-label" for="phone">Téléphone</label>
+                        </div>
 
-                            <!-- Submit button -->
-                            <button type="submit" class="btn btn-primary btn-block mb-4">S'enregistrer</button>
-                        </form>
+                        <!-- Submit button -->
+                        <button type="submit" class="btn btn-primary btn-block mb-4">S'enregistrer</button>
                         {{ form_end(registrationForm) }}
                     </div>
                 </div>

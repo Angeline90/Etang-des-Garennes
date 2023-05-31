@@ -12,36 +12,48 @@
             <div class="row mb-4">
                 <div class="col">
                     <div class="form-outline">
-                        <input type="text" id="form6Example2" class="form-control" />
-                        <label class="form-label" for="form6Example2">{{ form_row(contactForm.fullName, {
-                            label: 'Nom et Prénom'
-                        }) }}</label>
+                        {{ form_widget(contactForm.fullName, {
+                            'attr': {
+                                'class': 'form-control',
+                                'id': 'fullName'
+                            }
+                        }) }}
+                        <label class="form-label" for="fullName">Nom et Prénom</label>
                     </div>
                 </div>
             </div>
 
             <!-- Email input -->
             <div class="form-outline mb-4">
-                <input type="email" id="form6Example5" class="form-control" />
-                <label class="form-label" for="form6Example5">{{ form_row(contactForm.email, {
-                    label: 'Email'
-                }) }}</label>
+                {{ form_widget(contactForm.email, {
+                    'attr': {
+                        'class': 'form-control',
+                        'id': 'email'
+                    }
+                }) }}
+                <label class="form-label" for="email">Email</label>
             </div>
 
             <!-- Text input -->
             <div class="form-outline mb-4">
-                <input type="text" id="form6Example4" class="form-control" />
-                <label class="form-label" for="form6Example4">{{ form_row(contactForm.subject,{
-                    label: 'Sujet'
-                }) }}</label>
+                {{ form_widget(contactForm.subject, {
+                    'attr': {
+                        'class': 'form-control',
+                        'id': 'subject'
+                    }
+                }) }}
+                <label class="form-label" for="subject">Sujet</label>
             </div>
 
-             <!-- Textarea input -->
+            <!-- Textarea input -->
             <div class="form-outline mb-4">
-                <textarea id="form6Example4" class="form-control" /></textarea>
-                <label class="form-label" for="form6Example4">{{ form_row(contactForm.message,{
-                    label: 'Message'
-                }) }}</label>
+                {{ form_widget(contactForm.message, {
+                    'attr': {
+                        'class': 'form-control',
+                        'id': 'message'
+                    }
+                }) }}
+                <label class="form-label" for="message">Message</label>
             </div>
 
             <!-- Submit button -->
