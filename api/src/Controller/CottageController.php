@@ -27,7 +27,7 @@ class CottageController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_cottage_id', methods: ['GET'])]
+    #[Route('/show/{id}', name: 'app_cottage_id', methods: ['GET'])]
     public function showById(Cottage $cottage): Response
     {
         return $this->render('cottage/cottageId.html.twig', [
