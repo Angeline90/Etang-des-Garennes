@@ -1,64 +1,69 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-<div class="container">
-    <div class="encart">
-        {{ form_start(contactForm) }}
-        <div class="class-errors">
-            {{ form_errors(contactForm)}}
-        </div>
-            <!-- 2 column grid layout with text inputs for the first and last names -->
-            <div class="row mb-4">
-                <div class="col">
-                    <div class="form-outline">
-                        {{ form_widget(contactForm.fullName, {
-                            'attr': {
-                                'class': 'form-control',
-                                'id': 'fullName'
-                            }
-                        }) }}
-                        <label class="form-label" for="fullName">Nom et Prénom</label>
+ <main class="my-5">
+        <section class="contactForm py-5">
+        <h1 class="text-center mb-3">Contactez-nous</h1>
+            <div class="container">
+                <div class="encart">
+                    {{ form_start(contactForm) }}
+                    <div class="class-errors">
+                        {{ form_errors(contactForm)}}
                     </div>
+                        <!-- 2 column grid layout with text inputs for the first and last names -->
+                        <div class="row mb-4">
+                            <div class="col">
+                                <div class="form-outline">
+                                    {{ form_widget(contactForm.fullName, {
+                                        'attr': {
+                                            'class': 'form-control',
+                                            'id': 'fullName'
+                                        }
+                                    }) }}
+                                    <label class="form-label" for="fullName">Nom et Prénom</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Email input -->
+                        <div class="form-outline mb-4">
+                            {{ form_widget(contactForm.email, {
+                                'attr': {
+                                    'class': 'form-control',
+                                    'id': 'email'
+                                }
+                            }) }}
+                            <label class="form-label" for="email">Email</label>
+                        </div>
+
+                        <!-- Text input -->
+                        <div class="form-outline mb-4">
+                            {{ form_widget(contactForm.subject, {
+                                'attr': {
+                                    'class': 'form-control',
+                                    'id': 'subject'
+                                }
+                            }) }}
+                            <label class="form-label" for="subject">Sujet</label>
+                        </div>
+
+                        <!-- Textarea input -->
+                        <div class="form-outline mb-4">
+                            {{ form_widget(contactForm.message, {
+                                'attr': {
+                                    'class': 'form-control',
+                                    'id': 'message'
+                                }
+                            }) }}
+                            <label class="form-label" for="message">Message</label>
+                        </div>
+
+                        <!-- Submit button -->
+                        <button type="submit" class="btn btn-primary btn-block mb-4">{{ button_label|default('Envoyer') }}</button>
+                    {{ form_end(contactForm) }}
                 </div>
             </div>
-
-            <!-- Email input -->
-            <div class="form-outline mb-4">
-                {{ form_widget(contactForm.email, {
-                    'attr': {
-                        'class': 'form-control',
-                        'id': 'email'
-                    }
-                }) }}
-                <label class="form-label" for="email">Email</label>
-            </div>
-
-            <!-- Text input -->
-            <div class="form-outline mb-4">
-                {{ form_widget(contactForm.subject, {
-                    'attr': {
-                        'class': 'form-control',
-                        'id': 'subject'
-                    }
-                }) }}
-                <label class="form-label" for="subject">Sujet</label>
-            </div>
-
-            <!-- Textarea input -->
-            <div class="form-outline mb-4">
-                {{ form_widget(contactForm.message, {
-                    'attr': {
-                        'class': 'form-control',
-                        'id': 'message'
-                    }
-                }) }}
-                <label class="form-label" for="message">Message</label>
-            </div>
-
-            <!-- Submit button -->
-            <button type="submit" class="btn btn-primary btn-block mb-4">{{ button_label|default('Envoyer') }}</button>
-        {{ form_end(contactForm) }}
-    </div>
-</div>
+        </section>
+    </main>
 
 {% endblock %}
