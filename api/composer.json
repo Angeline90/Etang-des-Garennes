@@ -32,7 +32,8 @@
         "symfony/validator": "6.2.*",
         "symfony/webpack-encore-bundle": "^1.16",
         "symfony/yaml": "6.2.*",
-        "symfonycasts/verify-email-bundle": "^1.13"
+        "symfonycasts/verify-email-bundle": "^1.13",
+        "vich/uploader-bundle": "^2.1"
     },
     "require-dev": {
         "api-platform/schema-generator": "^5.0",
