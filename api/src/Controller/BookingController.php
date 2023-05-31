@@ -5,11 +5,9 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[
-    Route('/app/booking', name: 'app_'),
-    IsGranted('ROLE_ADMIN')
+    Route('/app/booking', name: 'app_')
     ]
 class BookingController extends AbstractController
 {

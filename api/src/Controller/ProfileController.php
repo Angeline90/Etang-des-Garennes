@@ -49,16 +49,6 @@ class ProfileController extends AbstractController
         ]);
     }
 
-    // #[Route('/{id}/delete', name: 'delete', methods: ['POST'])]
-    // public function delete(Request $request, User $user, UserRepository $userRepository): Response
-    // {
-    //     if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
-    //         $userRepository->remove($user, true);
-    //     }
-
-    //     return $this->redirectToRoute('app_home', [], Response::HTTP_SEE_OTHER);
-    // }
-
     #[Route('/{id}/delete', name: 'delete', methods: ['POST'])]
     public function delete(Request $request, int $id, UserRepository $userRepository): Response
     {

@@ -1,15 +1,56 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <div class="container">
-        {% for message in app.flashes('success') %}
-            <div class="alert alert-success mt-4">
-                {{ message }}
+<div class="container">
+    <div class="encart">
+        {{ form_start(contactForm) }}
+        <div class="class-errors">
+            {{ form_errors(contactForm)}}
+        </div>
+        <form>
+            <!-- 2 column grid layout with text inputs for the first and last names -->
+            <div class="row mb-4">
+                <div class="col">
+                    <div class="form-outline">
+                        <input type="text" id="form6Example2" class="form-control" />
+                        <label class="form-label" for="form6Example2">{{ form_row(contactForm.fullName, {
+                            label: 'Nom et Prénom'
+                        }) }}</label>
+                    </div>
+                </div>
             </div>
-        {% endfor %}
 
-        <h1>Formulaire de contact</h1>
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+                <input type="email" id="form6Example5" class="form-control" />
+                <label class="form-label" for="form6Example5">{{ form_row(contactForm.email, {
+                    label: 'Email'
+                }) }}</label>
+            </div>
 
-        {{ form(form) }}
-    </div>
+            <h1 class="text-center mb-3">Formulaire de contact</h1>
+
+            {{ form_start(contactForm) }}
+                {{ form_row(contactForm.fullName, {
+                    label: 'Nom et Prénom',
+                    class: 'form-label mt-4'
+
+                }) }}
+                {{ form_row(contactForm.email, {
+                    label: 'Adresse Email',
+                    class: 'form-label mt-4'
+                }) }}
+                {{ form_row(contactForm.subject, {
+                    label: 'Sujet',
+                    class: 'form-label mt-4'
+                }) }}
+                {{ form_row(contactForm.message, {
+                    label: 'Message',
+                    class: 'form-label mt-4'
+                }) }}
+                <button type="submit" class="btn-home mt-4">Envoyer</button>
+            {{ form_end(contactForm) }}
+        </div>
+    </section>
+</main>
 {% endblock %}

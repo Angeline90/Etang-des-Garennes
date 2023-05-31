@@ -24,7 +24,12 @@ h1 {
     font-size: 3rem;
 }
 
-h2 h3 {
+h2 {
+    font-family: 'Dancing script';
+    font-size: 2.5rem;
+}
+
+h3 {
     font-family: 'Montserrat Bold';
 }
 
@@ -79,11 +84,13 @@ a:hover {
     border: solid #2D6A4F;
     border-radius: 15px;
     padding: 10px;
+    color: white;
 }
 
 .btn-home:hover {
     background-color: #84B8A0;
     border-color: #E0D5BF;
+    color: white;
     
 }
 
@@ -95,7 +102,29 @@ a:hover {
     color: white;
 }
   
+.encart {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 500px;
+}
 
+.btn {
+    background-color: #2D6A4F;
+    border: solid #2D6A4F;
+    border-radius: 15px;
+    padding: 10px;
+    color: white;
+}
+
+.btn:hover {
+    background-color: #84B8A0;
+    border-color: #E0D5BF;
+    color: white;
+    
+}
 
   
 

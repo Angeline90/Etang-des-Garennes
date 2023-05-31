@@ -13,13 +13,33 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
-#[
-    Route('/app/cottage'),
-    IsGranted('ROLE_USER')
-]
+#[Route('/app/cottage')]
 class CottageController extends AbstractController
 {
-    #[Route('/', name: 'app_cottage_index', methods: ['GET'])]
+    #[Route('/list', name: 'app_cottage_list', methods: ['GET'])]
+    public function list(CottageRepository $cottageRepository): Response
+    {
+        // dd($this->getUser()->getCottages()->getValues());
+        $cottages = $cottageRepository->findAll();
+
+        return $this->render('cottage/cottageList.html.twig', [
+            'cottages' => $cottages,
+        ]);
+    }
+
+    #[Route('/show/{id}', name: 'app_cottage_id', methods: ['GET'])]
+    public function showById(Cottage $cottage): Response
+    {
+        return $this->render('cottage/cottageId.html.twig', [
+            'cottage' => $cottage,
+        ]);
+    }
+
+
+    #[
+        Route('/', name: 'app_cottage_index', methods: ['GET']),
+        IsGranted('ROLE_USER')
+    ]
     public function index(CottageRepository $cottageRepository): Response
     {
         // dd($this->getUser()->getCottages()->getValues());
@@ -30,7 +50,10 @@ class CottageController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'app_cottage_new', methods: ['GET', 'POST'])]
+    #[
+        Route('/new', name: 'app_cottage_new', methods: ['GET', 'POST']),
+        IsGranted('ROLE_USER')
+    ]
     public function new(Request $request, CottageRepository $cottageRepository, UserRepository $userRepository): Response
     {
         $cottage = new Cottage();
@@ -51,7 +74,10 @@ class CottageController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_cottage_show', methods: ['GET'])]
+    #[
+        Route('/{id}', name: 'app_cottage_show', methods: ['GET']),
+        IsGranted('ROLE_USER')
+    ]
     public function show(Cottage $cottage): Response
     {
         return $this->render('cottage/show.html.twig', [
@@ -59,7 +85,10 @@ class CottageController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_cottage_edit', methods: ['GET', 'POST'])]
+    #[
+        Route('/{id}/edit', name: 'app_cottage_edit', methods: ['GET', 'POST']),
+        IsGranted('ROLE_USER')
+    ]
     public function edit(Request $request, Cottage $cottage, CottageRepository $cottageRepository, UserRepository $userRepository): Response
     {
         $owners = $this->isGranted('ROLE_ADMIN')
@@ -79,7 +108,10 @@ class CottageController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_cottage_delete', methods: ['POST'])]
+    #[
+        Route('/{id}', name: 'app_cottage_delete', methods: ['POST']),
+        IsGranted('ROLE_USER')
+    ]
     public function delete(Request $request, Cottage $cottage, CottageRepository $cottageRepository): Response
     {
         if ($this->isCsrfTokenValid('delete' . $cottage->getId(), $request->request->get('_token'))) {
