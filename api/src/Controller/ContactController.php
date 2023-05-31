@@ -9,8 +9,6 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ContactController extends AbstractController
@@ -18,8 +16,7 @@ class ContactController extends AbstractController
     #[Route('/app/contact', name: 'app_contact')]
     public function index(
         Request $request, 
-        ContactRepository $contactRepository,
-        MailerInterface $mailer): Response
+        ContactRepository $contactRepository): Response
     {
         $contact = new Contact();
         // pour pré-remplir le form si l'user est déjà connecté
@@ -34,16 +31,6 @@ class ContactController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $contactRepository->save($contact,true);
-
-            $email= (new Email())
-                    ->from($contact->getEmail())
-                    ->to($this->getParameter('mailer_from'))
-                    ->subject('Un nouveau message a été envoyé')
-                    ->html($this->renderView('contact/newContactEmail.html.twig', [
-                        'contact' => $contact,
-                    ]));
-
-            $mailer->send($email);
           
             $this->addFlash(
                 'success', 
@@ -54,7 +41,7 @@ class ContactController extends AbstractController
         }
 
         return $this->render('contact/index.html.twig', [
-            'contactForm' => $form,
+            'form' => $form,
         ]);
     }
 }

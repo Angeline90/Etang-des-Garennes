@@ -1,38 +1,15 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-<main class="my-5">
-    <section class="contactForm py-5">
-        <div class="container d-flex flex-column align-items-center">
-            {% for message in app.flashes('success') %}
-                <div class="alert alert-success mt-4">
-                    {{ message }}
-                </div>
-            {% endfor %}
+    <div class="container">
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success mt-4">
+                {{ message }}
+            </div>
+        {% endfor %}
 
-            <h1 class="text-center mb-3">Formulaire de contact</h1>
+        <h1>Formulaire de contact</h1>
 
-            {{ form_start(contactForm) }}
-                {{ form_row(contactForm.fullName, {
-                    label: 'Nom et Prénom',
-                    class: 'form-label mt-4'
-
-                }) }}
-                {{ form_row(contactForm.email, {
-                    label: 'Adresse Email',
-                    class: 'form-label mt-4'
-                }) }}
-                {{ form_row(contactForm.subject, {
-                    label: 'Sujet',
-                    class: 'form-label mt-4'
-                }) }}
-                {{ form_row(contactForm.message, {
-                    label: 'Message',
-                    class: 'form-label mt-4'
-                }) }}
-                <button type="submit" class="btn-home mt-4">Envoyer</button>
-            {{ form_end(contactForm) }}
-        </div>
-    </section>
-</main>
+        {{ form(form) }}
+    </div>
 {% endblock %}
