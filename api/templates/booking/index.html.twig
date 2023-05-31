@@ -20,15 +20,39 @@
 
 <script>
     const calendarElement = document.getElementById('calendar');
-    calendarElement.addEventListener('addEvent.mdb.calendar',(e)=>{
-      alert('date début:'+" "+e.event.start.date   );
-     alert('date fin:'+" "+e.event.end.date  );
-     alert('description:'+" "+e.event.description);
-    alert('summary:'+" "+e.event.summary);
+    {# const now = new Date().toISOString();
+    console.log(now); #}
+   
+    calendarElement.addEventListener('addEvent.mdb.calendar',async (e)=>{
+        
+        {# const arrivalDate = e.event.start.date.getTime();
+        const departureDate = e.event.end.date.getTime();
+        const timeDiff = departureDate - arrivalDate;
+        const daysDiff = timeDiff / (1000 * 3600 * 24);
+        console.log(daysDiff); #}
+        const data = {
+            "clients": [
+                "/users/"+{{app.user.id}}
+            ],
+            "arrivalDate": e.event.start.date,
+            "departureDate": e.event.end.date,
+            //"duration": daysDiff,
+            "bookingState": "/booking_states/1",
+            "cottage": "/cottages/2",
+            "createdAt": new Date().toISOString(),
+            "updatedAt": new Date().toISOString(),
+        }
+        const rawResponse = await fetch('https://localhost/bookings', {
+            method: 'POST',
+            headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+        const content = await rawResponse.json();
 
-
-
-
+        console.log(content);
  })
 </script> 
 
