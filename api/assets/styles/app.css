@@ -126,6 +126,15 @@ a:hover {
     
 }
 
+.btn:active,
+.btn:focus,
+.btn:active:focus {
+    background-color:  #2D6A4F;
+    border-color: #E0D5BF;
+    color: white;
+}
+
+
   
 
 
