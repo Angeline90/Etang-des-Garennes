@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Booking;
+use App\Entity\Cottage;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -37,6 +38,24 @@ class BookingRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    public function getListForGivenPeriod(string $start, string $end, ?Cottage $cottage=null)
+    {
+        $qb = $this->createQueryBuilder('b')
+            ->andWhere('b.arrivalDate < :end')
+            ->andWhere('b.departureDate > :start')
+            ->setParameter('start', $start)
+            ->setParameter('end', $end)
+        ;
+        if ($cottage) {
+            $qb->andWhere('b.cottage = :cottage')
+                ->setParameter('cottage', $cottage)
+            ;
+        }
+            return $qb->getQuery()
+            ->getResult()
+        ;
     }
 
 //    /**

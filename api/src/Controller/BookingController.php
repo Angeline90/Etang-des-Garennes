@@ -18,4 +18,5 @@ class BookingController extends AbstractController
             'controller_name' => 'BookingController',
         ]);
     }
+
 }

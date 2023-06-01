@@ -25,7 +25,8 @@
         const timeDiff = departureDate - arrivalDate;
         const daysDiff = timeDiff / (1000 * 3600 * 24);
         console.log(daysDiff); #}
-        console.log(e.event.start.date);
+
+        console.log(e.event);
         const arrivalDate = new Date(e.event.start.date. split('/').reverse().join('-')).toISOString();
         const departureDate = new Date(e.event.end.date. split('/').reverse().join('-')).toISOString();
         console.log(arrivalDate,departureDate);
@@ -49,10 +50,20 @@
             },
             body: JSON.stringify(data)
         });
-        const content = await rawResponse.json();
-
-        console.log(content);
- })
+        
+        {# const content = await rawResponse.json(); #}
+        const fetchBooking = async() => {
+        const jsonResponse = await fetch('https://localhost/bookings', {
+            method: 'GET',
+            headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+            },
+        });
+            console.log(jsonResponse);
+        };
+      
+    })
 </script> 
 
     {# <table class="table">
