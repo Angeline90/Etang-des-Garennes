@@ -5,8 +5,11 @@ namespace App\Controller;
 use App\Entity\Cottage;
 use App\Entity\User;
 use App\Form\CottageType;
+use App\Repository\BookingRepository;
+use App\Repository\BookingStateRepository;
 use App\Repository\CottageRepository;
 use App\Repository\UserRepository;
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,10 +31,16 @@ class CottageController extends AbstractController
     }
 
     #[Route('/show/{id}', name: 'app_cottage_id', methods: ['GET'])]
-    public function showById(Cottage $cottage): Response
+    public function showById(Request $request, Cottage $cottage, BookingRepository $bookingRepository ): Response
     {
+        $start = $request->query->get('start', (new DateTime('first day of this month'))->format('Y-m-d'));
+        $end = $request->query->get('end', (new DateTime('last day of this month'))->format('Y-m-d'));
+        dump($bookingRepository->getListForGivenPeriod($start,$end,$cottage));
         return $this->render('cottage/cottageId.html.twig', [
             'cottage' => $cottage,
+            'start' => $start,
+            'end' => $end,
+            'bookings' => $bookingRepository->getListForGivenPeriod($start,$end,$cottage),
         ]);
     }
 
