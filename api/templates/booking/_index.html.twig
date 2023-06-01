@@ -1,8 +1,4 @@
-{% extends 'base.html.twig' %}
 
-{% block title %}Hello BookingController!{% endblock %}
-
-{% block body %}
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
@@ -18,8 +14,9 @@
 
 <script>
     const calendarElement = document.getElementById('calendar');
-    {# const now = new Date().toISOString();
-    console.log(now); #}
+    const now = new Date().toISOString();
+    //.toISOString();
+    console.log(now); 
    
     calendarElement.addEventListener('addEvent.mdb.calendar',async (e)=>{
         
@@ -88,5 +85,5 @@
         </tbody>
     </table> #}
 
-    <a href="{{ path('app_booking_new') }}">Create new</a> 
-{% endblock %}
+    {# <a href="{{ path('app_booking_new') }}">Create new</a>  #}
+
