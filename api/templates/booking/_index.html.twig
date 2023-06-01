@@ -14,7 +14,7 @@
 
 <script>
     const calendarElement = document.getElementById('calendar');
-    const now = new Date().toISOString();
+    const now = new Date().toJSON();
     //.toISOString();
     console.log(now); 
    
@@ -25,17 +25,21 @@
         const timeDiff = departureDate - arrivalDate;
         const daysDiff = timeDiff / (1000 * 3600 * 24);
         console.log(daysDiff); #}
+        console.log(e.event.start.date);
+        const arrivalDate = new Date(e.event.start.date. split('/').reverse().join('-')).toISOString();
+        const departureDate = new Date(e.event.end.date. split('/').reverse().join('-')).toISOString();
+        console.log(arrivalDate,departureDate);
         const data = {
             "clients": [
                 "/users/"+{{app.user.id}}
             ],
-            "arrivalDate": e.event.start.date,
-            "departureDate": e.event.end.date,
+            "arrivalDate": arrivalDate,
+            "departureDate": departureDate,
             //"duration": daysDiff,
             "bookingState": "/booking_states/1",
-            "cottage": "/cottages/2",
-            "createdAt": new Date().toISOString(),
-            "updatedAt": new Date().toISOString(),
+            "cottage": "/cottages/"+{{cottage.id}},
+            "createdAt": new Date().toJSON(),
+            "updatedAt": new Date().toJSON(),
         }
         const rawResponse = await fetch('https://localhost/bookings', {
             method: 'POST',
