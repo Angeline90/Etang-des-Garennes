@@ -14,29 +14,33 @@
 
 <script>
     const calendarElement = document.getElementById('calendar');
-    const now = new Date().toJSON();
+    {# const now = new Date().toJSON();
     //.toISOString();
-    console.log(now); 
+    console.log(now);  #}
    
     calendarElement.addEventListener('addEvent.mdb.calendar',async (e)=>{
         
-        {# const arrivalDate = e.event.start.date.getTime();
-        const departureDate = e.event.end.date.getTime();
-        const timeDiff = departureDate - arrivalDate;
-        const daysDiff = timeDiff / (1000 * 3600 * 24);
-        console.log(daysDiff); #}
+         const firstDate = new Date(e.event.start.date).getTime();
+         console.log(firstDate);
+        const lastDate = new Date(e.event.end.date).getTime();
+        console.log(lastDate);
+        const timeDiff = (lastDate - firstDate);
+        console.log(timeDiff);
+        {# const daysDiff = Math.floor((timeDiff)/(2073600000)).toString(); #}
+        const daysDiff = "x";
+        console.log(daysDiff); 
 
-        console.log(e.event);
+        
         const arrivalDate = new Date(e.event.start.date. split('/').reverse().join('-')).toISOString();
         const departureDate = new Date(e.event.end.date. split('/').reverse().join('-')).toISOString();
-        console.log(arrivalDate,departureDate);
+        
         const data = {
             "clients": [
                 "/users/"+{{app.user.id}}
             ],
             "arrivalDate": arrivalDate,
             "departureDate": departureDate,
-            //"duration": daysDiff,
+            "duration": daysDiff,
             "bookingState": "/booking_states/1",
             "cottage": "/cottages/"+{{cottage.id}},
             "createdAt": new Date().toJSON(),
