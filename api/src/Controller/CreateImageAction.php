@@ -46,6 +46,7 @@ final class CreateImageAction extends AbstractController
 
     }
 
+    
     // #[Route('/app/cottage/{id}/add-card-image', name: 'app_images_cottage_card', methods: ['POST'])]
     // public function addCottageBanner(Cottage $cottage, Request $request)
     // {
