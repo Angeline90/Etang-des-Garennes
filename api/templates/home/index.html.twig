@@ -6,9 +6,10 @@
 
 {% block body %}
 
+<main class="homePage">
 
-    <main id="homePage">
-        <section class="homeHeader bg-image p-5">
+    <!--Section: BANNER-->
+    <section class="homeHeader bg-image p-5">
         <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
             <div class="container p-5 d-flex justify-content-evenly align-items-center h-100">
                 <div class="row">
@@ -24,38 +25,130 @@
                         <a href="{{path('app_booking_index')}}" class="text-white btn-home">Calendrier</a>
                     </div>
                 </div>
-               
+            
             </div>
         </div>
-        </section>
+    </section>
+    
 
-        <section class="cottages my-5">
-            <div class="container text-center">
-                <h2>Nos chambres</h2>
+    <!--Section: QSN-->
+    <section class="container my-5">
+        <h2 class="text-center mb-5">Qui sommes-nous ?</h2>
 
-                <div class="row my-5">
-                  {% for cottage in cottages %}
-                    <div class="col-lg-4 col-md-12 mb-4">
-                        <div class="card" style="background-color: white;">
-                            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                                <img src="{{ asset('build/pexels-maria-orlova-4906407.jpg') }}" class="img-fluid" />
-                                <a href="{{ path('app_cottage_id', {'id': cottage.id}) }}">
-                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                                </a>
-                            </div>
-                            <div class="card-body">
-                                <h3 class="card-title">{{ cottage.name }}</h3>
-                                <h4 class="card-subtitle">{{ cottage.price }}€</h4>
-                                <p class="card-text">{{ cottage.description }}</p>
-                                 <a href="{{ path('app_cottage_id', {'id': cottage.id}) }}" class="btn-home">Voir</a>
-                            </div>
+        <div class="row">
+            <div class="col-lg-5 mb-4 mb-lg-0 pb-2 pb-lg-0 pb-xl-2">
+            <img
+                src="{{ asset('build/house.jpg') }}"
+                class="img-fluid shadow-1-strong rounded"
+                alt="Sample image"
+            />
+            </div>
+            <div class="col-lg-7">
+            <h3 class="mb-4">Votre havre de paix !</h3>
+            <p>
+                Niché au cœur d'un environnement verdoyant et paisible, ce gîte enchanteur borde les rives d'un étang cristallin, offrant un refuge idéal pour les passionnés de pêche. Entouré par la nature luxuriante, il invite les initiés à s'imprégner de l'ambiance sereine et à se connecter avec les eaux calmes et claires de l'étang.
+
+                
+            </p>
+            <p>
+                Le gîte lui-même est un véritable havre de paix, conçu avec amour pour créer une expérience intime et authentique. Son architecture traditionnelle s'harmonise parfaitement avec le paysage environnant, tandis que son intérieur chaleureux et confortable procure une sensation de bien-être.
+
+                Chaque matin, vous vous éveillez aux doux chants des oiseaux, avant de vous diriger vers l'étang ensoleillé.
+            </p>
+            </div>
+        </div>
+    </section>
+
+            <!--Section: Design Block-->
+    <section>
+        <div
+        class="paralax-bg bg-image bg-fixed text-center"
+        >
+            <div class="mask" style="background-color: rgba(63, 81, 181, 0.3)">
+                <div class="d-flex justify-content-center align-items-center h-100">
+                    <div class="text-white m-5">
+                        <p class="text-white display-6 mb-5">
+                        <i class="fas fa-quote-left fa-xs" aria-hidden="true"></i>
+                        Le repos est le bien le plus précieux que l'homme puisse acquérir pour sa santé et sa sagesse.
+                        <i class="fas fa-quote-right fa-xs" aria-hidden="true"></i>
+                        </p>
+                        <p class="text-white lead font-italic mb-0">~ René Descartes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Section: Design Block-->
+    <section class="cottages my-5 text-center">
+      <h2 class="mb-5">Nos chambres</h2>
+
+      <p class="mb-5 mx-auto w-responsive">
+        Les chambres vous offrent une ambiance chaleureuse et accueillante. Chacune d'entre elles est soigneusement aménagée pour offrir un confort optimal. Les meubles en bois naturel et les couleurs apaisantes créent une atmosphère propice à la détente. Les larges fenêtres laissent entrer la lumière naturelle et offrent une vue magnifique sur la nature environnante. Que ce soit pour une escapade romantique ou une retraite tranquille, ces chambres offrent un refuge idéal pour se ressourcer et se reposer en toute quiétude.
+      </p>
+      <div class="row my-5">
+      {# {% for cottage in cottages %}
+        <div class="col-md-12 col-lg-4 mb-4 mb-lg-0">
+          <div class="card" style="background-color: white;">
+            <div
+              class="bg-image hover-overlay hover-zoom ripple"
+              data-mdb-ripple-color="light"
+            >
+              <img
+                src="{{ asset('build/pexels-maria-orlova-4906407.jpg') }}"
+                class="img-fluid"
+              />
+              <a href="{{ path('app_cottage_id', {'id': cottage.id}) }}">
+                <div
+                  class="mask"
+                  style="background-color: rgba(251, 251, 251, 0.15)"
+                ></div>
+              </a>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">{{ cottage.name }}</h3>
+              <h4 class="card-subtitle">{{ cottage.price }}€</h4>
+              <p class="card-text">
+                {{ cottage.description }}
+              </p>
+              
+              <a href="{{ path('app_cottage_id', {'id': cottage.id}) }}" class="btn-home mb-2 btn-block">Voir</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+        
+      </div>
+    </section> #}
+
+
+    <section class="cottages my-5">
+        <div class="container text-center">
+            <h2>Nos chambres</h2>
+
+            <div class="row my-5">
+            {% for cottage in cottages %}
+                <div class="col-lg-4 col-md-12 mb-4">
+                    <div class="card" style="background-color: white;">
+                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                            <img src="{{ asset('build/pexels-maria-orlova-4906407.jpg') }}" class="img-fluid" />
+                            <a href="{{ path('app_cottage_id', {'id': cottage.id}) }}">
+                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">{{ cottage.name }}</h3>
+                            <h4 class="card-subtitle">{{ cottage.price }}€</h4>
+                            <p class="card-text">{{ cottage.description }}</p>
+                            <a href="{{ path('app_cottage_id', {'id': cottage.id}) }}" class="btn-home">Voir</a>
                         </div>
                     </div>
-                {% endfor %}
-            </div>
+                </div>
+            {% endfor %}
+        </div>
 
-        </section>
+    </section>
 
-    </main>
+</main>
 
 {% endblock %}
