@@ -14,22 +14,8 @@
 
 <script>
     const calendarElement = document.getElementById('calendar');
-    {# const now = new Date().toJSON();
-    //.toISOString();
-    console.log(now);  #}
    
     calendarElement.addEventListener('addEvent.mdb.calendar',async (e)=>{
-        
-         const firstDate = new Date(e.event.start.date).getTime();
-         console.log(firstDate);
-        const lastDate = new Date(e.event.end.date).getTime();
-        console.log(lastDate);
-        const timeDiff = (lastDate - firstDate);
-        console.log(timeDiff);
-        {# const daysDiff = Math.floor((timeDiff)/(2073600000)).toString(); #}
-        const daysDiff = "x";
-        console.log(daysDiff); 
-
         
         const arrivalDate = new Date(e.event.start.date. split('/').reverse().join('-')).toISOString();
         const departureDate = new Date(e.event.end.date. split('/').reverse().join('-')).toISOString();
@@ -40,7 +26,6 @@
             ],
             "arrivalDate": arrivalDate,
             "departureDate": departureDate,
-            "duration": daysDiff,
             "bookingState": "/booking_states/1",
             "cottage": "/cottages/"+{{cottage.id}},
             "createdAt": new Date().toJSON(),
@@ -55,7 +40,6 @@
             body: JSON.stringify(data)
         });
         
-        {# const content = await rawResponse.json(); #}
         const fetchBooking = async() => {
         const jsonResponse = await fetch('https://localhost/bookings', {
             method: 'GET',
@@ -68,41 +52,37 @@
         };
       
     })
+
+    {# custom calendar #}
+
+    {# const events = [
+        {
+            summary: 'reservation 1',
+            start: {
+                date: Calendar.dayjs().format('DD/MM/YYYY'),
+            },
+            end: {
+                date: Calendar.dayjs().format('DD/MM/YYYY'),
+            },
+            color: {
+                background: '#f0f',
+            },
+        },
+               {
+            summary: 'reservation CAROLE',
+            start: {
+                date: Calendar.dayjs().format('DD/MM/YYYY'),
+            },
+            end: {
+                date: Calendar.dayjs().format('DD/MM/YYYY'),
+            },
+            color: {
+                background: '#f0f',
+            },
+        },
+    ];
+
+    const calendarInstance = Calendar.getInstance(calendarElement);
+    calendarInstance.addEvents(events) #}
 </script> 
-
-    {# <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>ArrivalDate</th>
-                <th>DepartureDate</th>
-                <th>Duration</th>
-                <th>CreatedAt</th>
-                <th>UpdatedAt</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for booking in bookings %}
-            <tr>
-                <td>{{ booking.id }}</td>
-                <td>{{ booking.arrivalDate ? booking.arrivalDate|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ booking.departureDate ? booking.departureDate|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ booking.duration ? booking.duration.format('%y year(s), %m month(s), %d day(s)') : '' }}</td>
-                <td>{{ booking.createdAt ? booking.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ booking.updatedAt ? booking.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('app_booking_show', {'id': booking.id}) }}">show</a>
-                    <a href="{{ path('app_booking_edit', {'id': booking.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table> #}
-
-    {# <a href="{{ path('app_booking_new') }}">Create new</a>  #}
 

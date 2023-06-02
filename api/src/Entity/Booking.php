@@ -3,6 +3,10 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Post;
+use App\Controller\CreateBookingDurationAction;
 use App\Repository\BookingRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -10,7 +14,12 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: BookingRepository::class)]
-#[ApiResource]
+#[ApiResource(mercure:true,
+    operations:[
+        new Get(),
+        new GetCollection(),
+        new Post(controller: CreateBookingDurationAction::class)])]
+#[ORM\HasLifecycleCallbacks(),]       
 class Booking
 {
     #[ORM\Id]
@@ -46,6 +55,12 @@ class Booking
     public function __construct()
     {
         $this->clients = new ArrayCollection();
+    }
+
+    #[ORM\PrePersist]
+    public function onCreate(): void
+    {
+        $this->setCreatedAt(new \DateTimeImmutable());
     }
 
     public function getId(): ?int
