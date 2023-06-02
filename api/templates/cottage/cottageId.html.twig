@@ -41,7 +41,7 @@
                 <th>Duration</th>
                 <th>CreatedAt</th>
                 <th>UpdatedAt</th>
-                <th>actions</th>
+                <th>User</th>
             </tr>
         </thead>
         <tbody>
@@ -53,6 +53,13 @@
                 <td>{{ booking.duration ? booking.duration.format('%y year(s), %m month(s), %d day(s)') : '' }}</td>
                 <td>{{ booking.createdAt ? booking.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ booking.updatedAt ? booking.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                {% for client in booking.clients %}
+                    Nom : {{ client.name }} Prénom : {{ client.firstName }} / {{ client.email }}
+                    {% if not loop.last %}
+                    {% endif %}
+                {% endfor %}
+                </td>
             </tr>
         {% else %}
             <tr>
