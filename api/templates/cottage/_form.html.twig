@@ -52,7 +52,13 @@
             <label class="form-label" for="capacity">Capacité</label>
         </div>
 
-        {% if cottage.id %}
+
+        <!-- Submit button -->
+        <button type="submit" class="btn-home btn-block mb-4">{{ button_label|default('Enregistrer') }}</button>
+        {{ form_end(form) }}
+
+
+           {% if cottage.id %}
             <div class="container">
                 <div class="encart">
                     <form method="POST" action="{{ path('app_images_cottage_banner', {'id': cottage.id})}}" enctype="multipart/form-data">
@@ -62,13 +68,7 @@
                 </div>
             </div>
         {% endif %}
-
-
-
-        <!-- Submit button -->
-        <button type="submit" class="btn-home btn-block mb-4">{{ button_label|default('Enregistrer') }}</button>
-        {{ form_end(form) }}
+        
     </div>
-
    
 </div>

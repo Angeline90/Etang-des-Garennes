@@ -3,10 +3,14 @@
 {% block title %}New User{% endblock %}
 
 {% block body %}
-    <h1>Create new User</h1>
+<main class="my-5">
+    <section class="user-new py-5">
+        <h1 class="text-center mb-3 font-weight-normal">Create new User</h1>
 
-    {# {{ include('user/_form.html.twig') }} #}
-    <a href="{{ path('app_register') }}">nvl utilisateur</a>
+        {# {{ include('user/_form.html.twig') }} #}
+        <a class="btn-home" href="{{ path('app_register') }}">nvl utilisateur</a>
 
-    <a href="{{ path('app_user_index') }}">back to list</a>
+        <a class="btn-home" href="{{ path('app_user_index') }}">back to list</a>
+    </section>
+</main>
 {% endblock %}

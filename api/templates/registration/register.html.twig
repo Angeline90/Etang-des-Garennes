@@ -4,7 +4,7 @@
 
 {% block body %}
     <main class="my-5">
-        <section class="registerForm py-5">
+        <section class="register-form py-5">
             <div class="container d-flex flex-column align-items-center">
                 {% for flash_error in app.flashes('verify_email_error') %}
                     <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
@@ -107,7 +107,7 @@
                         </div>
 
                         <!-- Submit button -->
-                        <button type="submit" class="btn btn-primary btn-block mb-4">S'enregistrer</button>
+                        <button type="submit" class="btn-home btn-block my-4">S'enregistrer</button>
                         {{ form_end(registrationForm) }}
                     </div>
                 </div>

@@ -26,8 +26,8 @@
                     <td>{{ cottage.description }}</td>
                     <td>{{ cottage.price }}</td>
                     <td>{{ cottage.capacity }}</td>
-                    <td class="d-flex">
-                        <a class="btn-home" href="{{ path('app_cottage_show', {'id': cottage.id}) }}">Voir</a>
+                    <td class="d-flex flex-column">
+                        <a class="btn-home mb-2" href="{{ path('app_cottage_show', {'id': cottage.id}) }}">Voir</a>
                        
                         <a class="btn-home" href="{{ path('app_cottage_edit', {'id': cottage.id}) }}">Modifier</a>
                     </td>
@@ -41,9 +41,8 @@
         </table>
 
         <div class="container d-flex">
-            <a class="btn-home" href="{{ path('app_cottage_new') }}">Nouveau gîte</a>
-            </br>
-            <a class="btn-home" href="{{ path('app_admin') }}">Retour sur la page de gestion</a>
+            <a class="btn-home me-3" href="{{ path('app_cottage_new') }}">Nouveau gîte</a>
+            <a class="btn-home" href="{{ path('app_admin') }}">Retour sur le dashbord</a>
         </div>    
     </section>
 </main>

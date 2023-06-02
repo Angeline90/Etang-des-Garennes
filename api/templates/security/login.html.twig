@@ -4,7 +4,7 @@
 
 {% block body %}
     <main class="my-5">
-        <section class="loginForm py-5">
+        <section class="login-form py-5">
             <form method="post" class="container d-flex flex-column align-items-center">
                 {% if error %}
                     <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -21,6 +21,7 @@
                     <div class="encart">
                         <label for="inputEmail">Email</label>
                         <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+                        
                         <label for="inputPassword">Mot de passe</label>
                         <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 
@@ -39,7 +40,7 @@
                             </div>
                         #}
 
-                        <button class="btn btn-primary btn-lg" type="submit">
+                        <button class="btn-home btn-block my-4" type="submit">
                             Valider
                         </button>
                     </div>

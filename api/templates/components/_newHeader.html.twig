@@ -44,7 +44,7 @@
             </li>
             {% if is_granted('ROLE_ADMIN') or app.user.isOwner() %}
               <li>
-                <a class="dropdown-item" href="{{path('app_admin')}}">Gestion du gîte</a>
+                <a class="dropdown-item" href="{{path('app_admin')}}">Dashboard Admin</a>
               </li>
               <li>
                 <a class="dropdown-item" href="{{path('app_cottage_new')}}">Créer un gîte</a>
