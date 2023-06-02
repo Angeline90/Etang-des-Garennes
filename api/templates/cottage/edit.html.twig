@@ -3,12 +3,16 @@
 {% block title %}Edit Cottage{% endblock %}
 
 {% block body %}
-    <h1>Modification</h1>
+<main class="my-5">
+    <section class="cottage-edit py-5">
+        <h1 class="text-center mb-3 font-weight-normal">Modification</h1>
 
-    {{ include('cottage/_form.html.twig', {'button_label': 'Mise à jour'}) }}
+        {{ include('cottage/_form.html.twig', {'button_label': 'Mise à jour'}) }}
 
-    <a class="btn-home" href="{{ path('app_cottage_index') }}">Retour à la liste</a>
-    <a class="btn-home" href="{{ path('app_admin') }}">Retour sur la page admin</a>
+        <a class="btn-home" href="{{ path('app_cottage_index') }}">Retour à la liste</a>
+        <a class="btn-home" href="{{ path('app_admin') }}">Retour sur la page admin</a>
 
-    {{ include('cottage/_delete_form.html.twig') }}
+        {{ include('cottage/_delete_form.html.twig') }}
+    </section>
+</main>
 {% endblock %}

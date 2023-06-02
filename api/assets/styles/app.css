@@ -87,11 +87,20 @@ a:hover {
     color: white;
 }
 
+
 .btn-home:hover {
     background-color: #84B8A0;
     border-color: #E0D5BF;
     color: white;
     
+}
+
+.btn-home:active,
+.btn-home:focus,
+.btn-home:active:focus {
+    background-color:  #2D6A4F;
+    border-color: #E0D5BF;
+    color: white;
 }
 
 .cottages h2, h3, p {
@@ -111,7 +120,7 @@ a:hover {
     max-width: 500px;
 }
 
-.btn {
+/* .btn {
     background-color: #2D6A4F;
     border: solid #2D6A4F;
     border-radius: 15px;
@@ -124,15 +133,9 @@ a:hover {
     border-color: #E0D5BF;
     color: white;
     
-}
+} */
 
-.btn:active,
-.btn:focus,
-.btn:active:focus {
-    background-color:  #2D6A4F;
-    border-color: #E0D5BF;
-    color: white;
-}
+
 
 
   
