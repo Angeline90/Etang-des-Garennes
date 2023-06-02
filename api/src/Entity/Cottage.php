@@ -3,14 +3,17 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\ApiProperty;
 use App\Repository\CottageRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: CottageRepository::class)]
-#[ApiResource]
+#[ApiResource(types: ['https://schema.org/Cottage'])]
 class Cottage
 {
     #[ORM\Id]
@@ -37,6 +40,7 @@ class Cottage
     private ?int $capacity = null;
 
     #[ORM\OneToMany(mappedBy: 'cottage', targetEntity: Image::class)]
+    #[ApiProperty(types: ['https://schema.org/image'])]
     private Collection $images;
 
     public function __construct()
