@@ -40,7 +40,7 @@ class BookingRepository extends ServiceEntityRepository
         }
     }
 
-    public function getListForGivenPeriod(string $start, string $end, ?Cottage $cottage=null)
+    public function getListForGivenPeriod(string $start, string $end, ?Cottage $cottage = null)
     {
         $qb = $this->createQueryBuilder('b')
             ->andWhere('b.arrivalDate < :end')

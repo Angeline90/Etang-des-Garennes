@@ -36,15 +36,13 @@ class CottageController extends AbstractController
     {
         $start = $request->query->get('start', (new DateTime('first day of this month'))->format('Y-m-d'));
         $end = $request->query->get('end', (new DateTime('last day of this month'))->format('Y-m-d'));
-        
-        // dump($bookingRepository->getListForGivenPeriod($start,$end,$cottage));
+        $bookings = $bookingRepository->getListForGivenPeriod($start,$end,$cottage);
+         dump($bookings);
         return $this->render('cottage/cottageId.html.twig', [
             'cottage' => $cottage,
             'start' => $start,
             'end' => $end,
-            'bookings' => $bookingRepository->getListForGivenPeriod($start,$end,$cottage),
-            // 'users' => $booking->getClients(),
-            
+            'bookings' => $bookings,            
 
         ]);
     }
