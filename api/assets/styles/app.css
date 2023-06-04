@@ -28,7 +28,7 @@ h1 {
 }
 
 h2 {
-    font-family: 'Montserrat Bold';
+    font-family: 'Montserrat Regular';
     font-size: 2.5rem;
 }
 
@@ -43,19 +43,27 @@ a p {
 }
 
 .navbar {
-    background-color: #84B8A0;
+    background-color: #D5E1DB;
+    box-shadow : none;
 }
+/* .navbar:not(.top-nav-collapse) {
+    background-color: transparent;
+}
+.navbar-scrolled {
+    background-color: #D5E1DB;
+} */
+
 .nav-link {
     color: black;
 }
+
 .nav-link:hover {
     color: black;
     text-decoration: underline;
 }
 
 .homeHeader {
-    height: 100vh;
-    /* filter: brightness(50%); */
+    height: 60vw;
     background-image: url('../images/pexels-paul-g-13615338.jpg');
     background-position: center;
     background-size: cover;
@@ -106,7 +114,7 @@ a:hover {
     color: white;
 }
 
-.cottages h2, h3, p {
+.cottages h3, p {
     color: black;
 }
 
@@ -127,6 +135,14 @@ a:hover {
     background-image: url('../images/swan.jpg');
     height: 400px;
 }
+
+.card-img-top {
+    width: 100%;
+    border-top-left-radius: calc(.25rem - 1px);
+    border-top-right-radius: calc(.25rem - 1px)
+}
+
+
 
 
 

@@ -1,29 +1,30 @@
 <header>
-     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-      <div class="container-fluid">
-        <!-- Navbar brand -->
-        <a class="navbar-brand" href="{{path('app_home')}}">
-          <img src="{{ asset('build/logo/logo-black-transparent.png') }}" width="80" alt="" loading="lazy"
-            style="margin-top: -3px;" />
-        </a>
-        <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01"
-          aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
-          <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarExample01">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item active">
-              <a class="nav-link" aria-current="page" href="{{path('app_home')}}">Accueil</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{path('app_cottage_list')}}">Locations</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Évènements</a>
-            </li>
-          </ul>
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid">
+      <!-- Navbar brand -->
+      <a class="navbar-brand" href="{{path('app_home')}}">
+        <img src="{{ asset('build/logo/logo-black-transparent.png') }}" width="80" alt="" loading="lazy"
+          style="margin-top: -3px;" />
+      </a>
+      <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample01"
+        aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarExample01">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" aria-current="page" href="{{path('app_home')}}">Accueil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{path('app_cottage_list')}}">Locations</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Évènements</a>
+          </li>
+        </ul>
 
-          <div class="dropdown p-2">
+        <div class="dropdown p-2">
           <a
             class="dropdown-toggle d-flex align-items-center hidden-arrow"
             href="#"
@@ -43,17 +44,17 @@
               <a class="dropdown-item" href="{{path('app_profile_show')}}">Mon profil</a>
             </li>
             {% if is_granted('ROLE_ADMIN') or app.user.isOwner() %}
-              <li>
-                <a class="dropdown-item" href="{{path('app_admin')}}">Dashboard Admin</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="{{path('app_cottage_new')}}">Créer un gîte</a>
-              </li>
-              {# {% endif %} #}
-              {# {% if app.user.cottages | length > 0 %} #}
-              <li>
-                <a class="dropdown-item" href="{{path('app_cottage_index')}}">Mes gîtes</a>
-              </li>
+            <li>
+              <a class="dropdown-item" href="{{path('app_admin')}}">Dashboard Admin</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="{{path('app_cottage_new')}}">Créer un gîte</a>
+            </li>
+            {# {% endif %} #}
+            {# {% if app.user.cottages | length > 0 %} #}
+            <li>
+              <a class="dropdown-item" href="{{path('app_cottage_index')}}">Mes gîtes</a>
+            </li>
             {% endif %}
             <li>
               <a class="dropdown-item" href="#">Mes réservations</a>
@@ -62,35 +63,17 @@
               <a class="dropdown-item" href="{{path('app_logout')}}">Déconnexion</a>
             </li>
             {% else %}
-
-              <li>
-                <a class="dropdown-item" href="{{path('app_login')}}">Connexion</a>
-              </li>
-              <li>
-                <a class="dropdown-item" href="{{path('app_register')}}">Inscription</a>
-              </li>
-
-        
-          {% endif %}
+            <li>
+              <a class="dropdown-item" href="{{path('app_login')}}">Connexion</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="{{path('app_register')}}">Inscription</a>
+            </li>
+            {% endif %}
           </ul>
         </div>
-
-          {# <ul class="navbar-nav d-flex flex-row">
-            <!-- Icons -->
-            <li class="nav-item me-3 me-lg-0">
-              <a class="nav-link" href="https://www.facebook.com/mdbootstrap" rel="nofollow" target="_blank">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-            </li>
-            <li class="nav-item me-3 me-lg-0">
-              <a class="nav-link" href="https://twitter.com/MDBootstrap" rel="nofollow" target="_blank">
-                <i class="fab fa-twitter"></i>
-              </a>
-            </li>
-          
-          </ul> #}
-        </div>
       </div>
-    </nav>
+    </div>
+  </nav>
 
 </header>

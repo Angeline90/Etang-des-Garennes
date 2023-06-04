@@ -35,7 +35,7 @@
     <section class="container my-5">
         <h2 class="text-center mb-5">Qui sommes-nous ?</h2>
 
-        <div class="row">
+        <div class="row align-items-center">
             <div class="col-lg-5 mb-4 mb-lg-0 pb-2 pb-lg-0 pb-xl-2">
             <img
                 src="{{ asset('build/house.jpg') }}"
@@ -59,11 +59,9 @@
         </div>
     </section>
 
-            <!--Section: Design Block-->
+    <!--Section: Paralax & citation-->
     <section>
-        <div
-        class="paralax-bg bg-image bg-fixed text-center"
-        >
+        <div class="paralax-bg bg-image bg-fixed text-center">
             <div class="mask" style="background-color: rgba(63, 81, 181, 0.3)">
                 <div class="d-flex justify-content-center align-items-center h-100">
                     <div class="text-white m-5">
@@ -79,24 +77,146 @@
         </div>
     </section>
 
-    <!--Section: Design Block-->
-    <section class="cottages my-5 text-center">
-      <h2 class="mb-5">Nos chambres</h2>
+    {# <div class="row mb-3 wow fadeIn" data-wow-delay="0.4s" style="visibility: visible; animation-name: fadeIn; animation-delay: 0.4s;">
+            <!--First column-->
+            <div class="col-lg-4 col-md-12 mb-5">
+              <!--Card-->
+              <div class="card card-cascade narrower">
+                <!--Card image-->
+                <div class="view view-cascade overlay zoom">
+                  <img src="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(147).jpg" class="card-img-top" alt="">
+                  <a>
+                    <div class="mask rgba-white-slight waves-effect waves-light"></div>
+                  </a>
+                </div>
+                <!--/.Card image-->
+                <!--Card content-->
+                <div class="card-body card-body-cascade">
+                  <h5 class="red-text"><i class="fas fa-utensils"></i> Lunches</h5>
+                  <!--Title-->
+                  <h4 class="card-title">This is title of the news</h4>
+                  <!--Text-->
+                  <p class="card-text grey-text">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi.</p>
+                  <a class="btn btn-elegant waves-effect waves-light">Button</a>
+                </div>
+                <!--/.Card content-->
+              </div>
+              <!--/.Card-->
+            </div>
+            <!--/First column-->
+            <!--Second column-->
+            <div class="col-lg-4 col-md-6 mb-5">
+              <!--Card-->
+              <div class="card card-cascade narrower">
+                <!--Card image-->
+                <div class="view view-cascade overlay zoom">
+                  <img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(151).jpg" class="card-img-top" alt="">
+                  <a>
+                    <div class="mask rgba-white-slight waves-effect waves-light"></div>
+                  </a>
+                </div>
+                <!--/.Card image-->
+                <!--Card content-->
+                <div class="card-body card-body-cascade">
+                  <h5 class="pink-text"><i class="fas fa-birthday-cake"></i> Dessert</h5>
+                  <!--Title-->
+                  <h4 class="card-title">This is title of the news</h4>
+                  <!--Text-->
+                  <p class="card-text grey-text">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi.</p>
+                  <a class="btn btn-elegant waves-effect waves-light">Button</a>
+                </div>
+                <!--/.Card content-->
+              </div>
+              <!--/.Card-->
+            </div>
+            <!--/Second column-->
+            <!--Third column-->
+            <div class="col-lg-4 col-md-6 mb-5">
+              <!--Card-->
+              <div class="card card-cascade narrower">
+                <!--Card image-->
+                <div class="view view-cascade overlay zoom">
+                  <img src="https://mdbootstrap.com/img/Photos/Lightbox/Thumbnail/img%20(149).jpg" class="card-img-top" alt="">
+                  <a>
+                    <div class="mask rgba-white-slight waves-effect waves-light"></div>
+                  </a>
+                </div>
+                <!--/.Card image-->
+                <!--Card content-->
+                <div class="card-body card-body-cascade">
+                  <h5 class="cyan-text"><i class="fas fa-glass-martini"></i> Drink</h5>
+                  <!--Title-->
+                  <h4 class="card-title">This is title of the news</h4>
+                  <!--Text-->
+                  <p class="card-text grey-text">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi.</p>
+                  <a class="btn btn-elegant waves-effect waves-light">Button</a>
+                </div>
+                <!--/.Card content-->
+              </div>
+              <!--/.Card-->
+            </div>
+            <!--/Third column-->
+          </div> #}
 
-      <p class="mb-5 mx-auto w-responsive">
+    {# <section class="test-cottages">
+    <div class="card-deck">
+      <div class="row m-5">
+     
+      <div class="col-lg-4 col-md-12 mb-4">
+        <div class="card">
+          <img class="card-img-top" src="{{ asset('build/pexels-maria-orlova-4906407.jpg') }}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          </div>
+          
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-12 mb-4">
+        <div class="card">
+          <img class="card-img-top" src="{{ asset('build/pexels-maria-orlova-4906407.jpg') }}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+          </div>
+         
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-12 mb-4">
+        <div class="card">
+          <img class="card-img-top" src="{{ asset('build/pexels-maria-orlova-4906407.jpg') }}" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+          </div>
+          
+        </div>
+      </div>
+      </div>
+      </div>
+      </div>
+    </section> #}
+
+
+
+    <!--Section: Cottages-->
+    <section class="cottages m-5 text-center">
+      <h2 class="my-5">Nos chambres</h2>
+
+      <p class="mx-5">
         Les chambres vous offrent une ambiance chaleureuse et accueillante. Chacune d'entre elles est soigneusement aménagée pour offrir un confort optimal. Les meubles en bois naturel et les couleurs apaisantes créent une atmosphère propice à la détente. Les larges fenêtres laissent entrer la lumière naturelle et offrent une vue magnifique sur la nature environnante. Que ce soit pour une escapade romantique ou une retraite tranquille, ces chambres offrent un refuge idéal pour se ressourcer et se reposer en toute quiétude.
       </p>
-      <div class="row my-5">
-      {# {% for cottage in cottages %}
-        <div class="col-md-12 col-lg-4 mb-4 mb-lg-0">
-          <div class="card" style="background-color: white;">
+      <div class="row m-5">
+      {% for cottage in cottages %}
+        <div class="col-lg-4 col-md-12 mb-4">
+          <div class="card">
             <div
               class="bg-image hover-overlay hover-zoom ripple"
               data-mdb-ripple-color="light"
             >
               <img
                 src="{{ asset('build/pexels-maria-orlova-4906407.jpg') }}"
-                class="img-fluid"
+                class="card-img-top"
               />
               <a href="{{ path('app_cottage_id', {'id': cottage.id}) }}">
                 <div
@@ -119,16 +239,16 @@
         {% endfor %}
         
       </div>
-    </section> #}
+    </section>
 
 
-    <section class="cottages my-5">
+    {# <section class="cottages my-5">
         <div class="container text-center">
             <h2>Nos chambres</h2>
 
             <div class="row my-5">
             {% for cottage in cottages %}
-                <div class="col-lg-4 col-md-12 mb-4">
+                <div class="col-md-12 col-lg-4 mb-4 mb-lg-0">
                     <div class="card" style="background-color: white;">
                         <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                             <img src="{{ asset('build/pexels-maria-orlova-4906407.jpg') }}" class="img-fluid" />
@@ -147,6 +267,98 @@
             {% endfor %}
         </div>
 
+    </section> #}
+
+    <section class="gallery my-5 text-center">
+      <h2 class="mb-5">Nos chambres en photo</h2>
+
+      <p class="mb-5 mx-auto w-responsive">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum laborum
+        animi doloremque nam dicta veniam dolor ea nostrum excepturi laboriosam
+        molestiae, expedita odit id! Sunt quia cumque consequatur perferendis
+        hic.
+      </p>
+
+      <div class="lightbox mx-5">
+        <div class="row g-0">
+          <div class="col-lg-4">
+            <img
+              src="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(40).jpg"
+              data-mdb-img="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(40).jpg"
+              alt="Lightbox image 1"
+              class="w-100"
+            />
+          </div>
+          <div class="col-lg-4">
+            <img
+              src="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(147).jpg"
+              data-mdb-img="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(147).jpg"
+              alt="Lightbox image 2"
+              class="w-100"
+            />
+          </div>
+          <div class="col-lg-4">
+            <img
+              src="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(150).jpg"
+              data-mdb-img="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(150).jpg"
+              alt="Lightbox image 3"
+              class="w-100"
+            />
+          </div>
+        </div>
+        <div class="row g-0">
+          <div class="col-lg-4">
+            <img
+              src="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(148).jpg"
+              data-mdb-img="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(148).jpg"
+              alt="Lightbox image 1"
+              class="w-100"
+            />
+          </div>
+          <div class="col-lg-4">
+            <img
+              src="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(146).jpg"
+              data-mdb-img="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(146).jpg"
+              alt="Lightbox image 2"
+              class="w-100"
+            />
+          </div>
+          <div class="col-lg-4">
+            <img
+              src="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(145).jpg"
+              data-mdb-img="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(145).jpg"
+              alt="Lightbox image 3"
+              class="w-100"
+            />
+          </div>
+        </div>
+        <div class="row g-0">
+          <div class="col-lg-4">
+            <img
+              src="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(151).jpg"
+              data-mdb-img="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(40).jpg"
+              alt="Lightbox image 1"
+              class="w-100"
+            />
+          </div>
+          <div class="col-lg-4">
+            <img
+              src="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(149).jpg"
+              data-mdb-img="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(149).jpg"
+              alt="Lightbox image 2"
+              class="w-100"
+            />
+          </div>
+          <div class="col-lg-4">
+            <img
+              src="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(41).jpg"
+              data-mdb-img="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(41).jpg"
+              alt="Lightbox image 3"
+              class="w-100"
+            />
+          </div>
+        </div>
+      </div>
     </section>
 
 </main>

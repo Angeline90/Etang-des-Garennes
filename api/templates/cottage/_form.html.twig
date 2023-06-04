@@ -59,13 +59,14 @@
 
 
            {% if cottage.id %}
-            <div class="container">
-                <div class="encart">
-                    <form method="POST" action="{{ path('app_images_cottage_banner', {'id': cottage.id})}}" enctype="multipart/form-data">
-                        <input type="file" name="file"/>
-                        <button class="btn-home" type="submit">Add</button>
-                    </form>
-                </div>
+            <div class="container encart">
+
+                <form method="POST" action="{{ path('app_images_cottage_banner', {'id': cottage.id})}}" enctype="multipart/form-data">
+                    <label class="form-label" for="price">Image de banière</label>
+                    <input class="mb-4" type="file" name="file"/>
+                    <button class="btn-home btn-block mb-4" type="submit">Add</button>
+                </form>
+               
             </div>
         {% endif %}
         
