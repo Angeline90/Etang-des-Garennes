@@ -121,6 +121,11 @@ a:hover {
 .cottages a {
     color: white;
 }
+
+.fix-size {
+
+    height: 300px;
+}
   
 .encart {
     background-color: #f9f9f9;

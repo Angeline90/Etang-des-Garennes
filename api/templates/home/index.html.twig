@@ -206,12 +206,12 @@
       <p class="mx-5">
         Les chambres vous offrent une ambiance chaleureuse et accueillante. Chacune d'entre elles est soigneusement aménagée pour offrir un confort optimal. Les meubles en bois naturel et les couleurs apaisantes créent une atmosphère propice à la détente. Les larges fenêtres laissent entrer la lumière naturelle et offrent une vue magnifique sur la nature environnante. Que ce soit pour une escapade romantique ou une retraite tranquille, ces chambres offrent un refuge idéal pour se ressourcer et se reposer en toute quiétude.
       </p>
-      <div class="row m-5">
+      <div class="row m-5 justify-content-md-center">
       {% for cottage in cottages %}
-        <div class="col-lg-4 col-md-12 mb-4">
-          <div class="card">
+        <div class="col-lg-4 col-md-8 mb-4">
+          <div class="card h-100">
             <div
-              class="bg-image hover-overlay hover-zoom ripple"
+              class="bg-image hover-overlay hover-zoom ripple fix-size"
               data-mdb-ripple-color="light"
             >
               <img
@@ -231,7 +231,8 @@
               <p class="card-text">
                 {{ cottage.description }}
               </p>
-              
+            </div>
+            <div class="card-footer">
               <a href="{{ path('app_cottage_id', {'id': cottage.id}) }}" class="btn-home mb-2 btn-block">Voir</a>
             </div>
           </div>
