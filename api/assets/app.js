@@ -6,7 +6,15 @@
  */
 
 // any CSS you import will output into a single css file (app.css in this case)
-import './styles/app.css';
+import './styles/app.scss';
 
 // start the Stimulus application
 import './bootstrap';
+
+require("bootstrap");
+const mdb = require('./mdb/js/mdb.pro');
+window.mdb = mdb // add lib as a global object
+// require('./mdb/plugins/js/all.min')
+const Calendar = require('./mdb/plugins/js/calendar.min');
+window.Calendar = Calendar;
+require('./js/custom_calendar');

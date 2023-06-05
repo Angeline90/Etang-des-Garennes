@@ -2,9 +2,12 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Doctrine\Orm\Filter\DateFilter;
+use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Link;
 use ApiPlatform\Metadata\Post;
 use App\Controller\CreateBookingDurationAction;
 use App\Repository\BookingRepository;
@@ -19,7 +22,18 @@ use Doctrine\ORM\Mapping as ORM;
         new Get(),
         new GetCollection(),
         new Post(controller: CreateBookingDurationAction::class)])]
-#[ORM\HasLifecycleCallbacks(),]       
+#[ORM\HasLifecycleCallbacks(),]  
+#[ApiFilter(DateFilter::class, properties: ['createdAt','arrivalDate', 'departureDate'])] 
+#[ApiResource(
+    uriTemplate: '/cottages/{id}/bookings', 
+    uriVariables: [
+        'id' => new Link(
+            fromClass: Cottage::class,
+            fromProperty: 'bookings'
+        )
+    ], 
+    operations: [new GetCollection()]
+)]    
 class Booking
 {
     #[ORM\Id]
