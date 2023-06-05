@@ -43,6 +43,12 @@ class Cottage
     #[ApiProperty(types: ['https://schema.org/image'])]
     private Collection $images;
 
+    #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $arrivalTime = null;
+
+    #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $departureTime = null;
+
     public function __construct()
     {
         $this->owners = new ArrayCollection();
@@ -183,6 +189,30 @@ class Cottage
                 $image->setCottage(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getArrivalTime(): ?\DateTimeInterface
+    {
+        return $this->arrivalTime;
+    }
+
+    public function setArrivalTime(\DateTimeInterface $arrivalTime): self
+    {
+        $this->arrivalTime = $arrivalTime;
+
+        return $this;
+    }
+
+    public function getDepartureTime(): ?\DateTimeInterface
+    {
+        return $this->departureTime;
+    }
+
+    public function setDepartureTime(\DateTimeInterface $departureTime): self
+    {
+        $this->departureTime = $departureTime;
 
         return $this;
     }
