@@ -44,6 +44,11 @@ class Cottage
     #[ApiProperty(types: ['https://schema.org/image'])]
     private Collection $images;
 
+    #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $arrivalTime = null;
+
+    #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
+    private ?\DateTimeInterface $departureTime = null;
     #[ORM\OneToOne(inversedBy: 'cottageBanner', cascade: ['persist', 'remove'])]
     private ?Image $banner = null;
 
@@ -194,6 +199,14 @@ class Cottage
         return $this;
     }
 
+    public function getArrivalTime(): ?\DateTimeInterface
+    {
+        return $this->arrivalTime;
+    }
+
+    public function setArrivalTime(\DateTimeInterface $arrivalTime): self
+    {
+        $this->arrivalTime = $arrivalTime;
     public function getBanner(): ?Image
     {
         return $this->banner;
@@ -206,6 +219,14 @@ class Cottage
         return $this;
     }
 
+    public function getDepartureTime(): ?\DateTimeInterface
+    {
+        return $this->departureTime;
+    }
+
+    public function setDepartureTime(\DateTimeInterface $departureTime): self
+    {
+        $this->departureTime = $departureTime;
     public function getCard(): ?Image
     {
         return $this->card;
