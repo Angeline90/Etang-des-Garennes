@@ -37,8 +37,8 @@
 		{% include 'components/_footer.html.twig' %}
 		<script>
 			const userId = {{app.user.id}};
-			const userName = {{app.user.name}};
-			const cottageId = {{cottage.id}};
+			const userName = "{{app.user.name}}";
+			const cottageId = {{ cottage is defined ? cottage.id : null}};
 		</script>
 		
 	</body>
