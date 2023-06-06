@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\ApiProperty;
 use App\Repository\CottageRepository;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
@@ -61,6 +62,8 @@ class Cottage
         $this->owners = new ArrayCollection();
         $this->bookings = new ArrayCollection();
         $this->images = new ArrayCollection();
+        $this->arrivalTime = new DateTime('12:30:00');
+        $this->departureTime = new DateTime('10:00:00');
     }
 
     public function getId(): ?int
@@ -231,7 +234,7 @@ class Cottage
     {
         $this->departureTime = $departureTime;
     }
-    
+
     public function getCard(): ?Image
     {
         return $this->card;
