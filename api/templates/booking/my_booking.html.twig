@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>Mes Réservations</h1>
+<table class="table">
+        <thead>
+            <tr>
+                <th>Clients</th>
+                <th>ArrivalDate</th>
+                <th>DepartureDate</th>
+                <th>Duration</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for booking in bookings %}
+            <tr>
+                <td>
+                {% for client in booking.clients %}
+                    Nom : {{ client.name }} Prénom : {{ client.firstName }} / {{ client.email }}
+                    {% if not loop.last %}
+                    {% endif %}
+                {% endfor %}
+                </td>
+                <td>{{ booking.arrivalDate ? booking.arrivalDate|date('d-m-Y H:i') : '' }}</td>
+                <td>{{ booking.departureDate ? booking.departureDate|date('d-m-Y H:i') : '' }}</td>
+                <td>{{ booking.duration ? booking.duration.format('%d nuit(s)') : '' }}</td>
+                <td>{{ booking.createdAt ? booking.createdAt|date('d-m-Y H:i') : '' }}</td>
+                <td>{{ booking.updatedAt ? booking.updatedAt|date('d-m-Y H:i') : '' }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">Aucune réservation trouvée</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table> 
+
+    {% endblock %}

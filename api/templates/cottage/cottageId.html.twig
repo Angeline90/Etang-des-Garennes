@@ -35,28 +35,33 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>Clients</th>
                 <th>ArrivalDate</th>
                 <th>DepartureDate</th>
                 <th>Duration</th>
                 <th>CreatedAt</th>
                 <th>UpdatedAt</th>
-                <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for booking in bookings %}
             <tr>
-                <td>{{ booking.id }}</td>
-                <td>{{ booking.arrivalDate ? booking.arrivalDate|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ booking.departureDate ? booking.departureDate|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ booking.duration ? booking.duration.format('%y year(s), %m month(s), %d day(s)') : '' }}</td>
-                <td>{{ booking.createdAt ? booking.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ booking.updatedAt ? booking.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                {% for client in booking.clients %}
+                    Nom : {{ client.name }} Prénom : {{ client.firstName }} / {{ client.email }}
+                    {% if not loop.last %}
+                    {% endif %}
+                {% endfor %}
+                </td>
+                <td>{{ booking.arrivalDate ? booking.arrivalDate|date('d-m-Y H:i') : '' }}</td>
+                <td>{{ booking.departureDate ? booking.departureDate|date('d-m-Y H:i') : '' }}</td>
+                <td>{{ booking.duration ? booking.duration.format(' %d nuit(s)') : '' }}</td>
+                <td>{{ booking.createdAt ? booking.createdAt|date('d-m-Y H:i') : '' }}</td>
+                <td>{{ booking.updatedAt ? booking.updatedAt|date('d-m-Y H:i') : '' }}</td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="7">no records found</td>
+                <td colspan="7">Aucune réservation trouvée</td>
             </tr>
         {% endfor %}
         </tbody>

@@ -1,108 +1,11 @@
 
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    .example-wrapper code { background: #008000; padding: 2px 6px; }
 </style>
 
 <div class="example-wrapper">
     <h1>Les réservations</h1>
 
-    <div id ="calendar" class="calendar" data-mdb-monday="true" </div>
-
-   
+    <div id ="calendar" data-mdb-monday="true"> </div>   
 </div>
-
-<script>
-    const calendarElement = document.getElementById('calendar');
-    {# const now = new Date().toJSON();
-    //.toISOString();
-    console.log(now);  #}
-   
-    calendarElement.addEventListener('addEvent.mdb.calendar',async (e)=>{
-        
-         const firstDate = new Date(e.event.start.date).getTime();
-         console.log(firstDate);
-        const lastDate = new Date(e.event.end.date).getTime();
-        console.log(lastDate);
-        const timeDiff = (lastDate - firstDate);
-        console.log(timeDiff);
-        {# const daysDiff = Math.floor((timeDiff)/(2073600000)).toString(); #}
-        const daysDiff = "x";
-        console.log(daysDiff); 
-
-        
-        const arrivalDate = new Date(e.event.start.date. split('/').reverse().join('-')).toISOString();
-        const departureDate = new Date(e.event.end.date. split('/').reverse().join('-')).toISOString();
-        
-        const data = {
-            "clients": [
-                "/users/"+{{app.user.id}}
-            ],
-            "arrivalDate": arrivalDate,
-            "departureDate": departureDate,
-            "duration": daysDiff,
-            "bookingState": "/booking_states/1",
-            "cottage": "/cottages/"+{{cottage.id}},
-            "createdAt": new Date().toJSON(),
-            "updatedAt": new Date().toJSON(),
-        }
-        const rawResponse = await fetch('https://localhost/bookings', {
-            method: 'POST',
-            headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        });
-        
-        {# const content = await rawResponse.json(); #}
-        const fetchBooking = async() => {
-        const jsonResponse = await fetch('https://localhost/bookings', {
-            method: 'GET',
-            headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-            },
-        });
-            console.log(jsonResponse);
-        };
-      
-    })
-</script> 
-
-    {# <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>ArrivalDate</th>
-                <th>DepartureDate</th>
-                <th>Duration</th>
-                <th>CreatedAt</th>
-                <th>UpdatedAt</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for booking in bookings %}
-            <tr>
-                <td>{{ booking.id }}</td>
-                <td>{{ booking.arrivalDate ? booking.arrivalDate|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ booking.departureDate ? booking.departureDate|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ booking.duration ? booking.duration.format('%y year(s), %m month(s), %d day(s)') : '' }}</td>
-                <td>{{ booking.createdAt ? booking.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ booking.updatedAt ? booking.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('app_booking_show', {'id': booking.id}) }}">show</a>
-                    <a href="{{ path('app_booking_edit', {'id': booking.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table> #}
-
-    {# <a href="{{ path('app_booking_new') }}">Create new</a>  #}
-

@@ -20,11 +20,11 @@ final class Version20230531135030 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('DROP SEQUENCE article_id_seq CASCADE');
-        $this->addSql('DROP SEQUENCE comment_id_seq CASCADE');
-        $this->addSql('ALTER TABLE comment DROP CONSTRAINT fk_9474526c7294869c');
-        $this->addSql('DROP TABLE article');
-        $this->addSql('DROP TABLE comment');
+        $this->addSql('DROP SEQUENCE IF EXISTS article_id_seq CASCADE');
+        $this->addSql('DROP SEQUENCE IF EXISTS comment_id_seq CASCADE');
+        $this->addSql('ALTER TABLE IF EXISTS comment DROP CONSTRAINT IF EXISTS fk_9474526c7294869c');
+        $this->addSql('DROP TABLE IF EXISTS article');
+        $this->addSql('DROP TABLE IF EXISTS comment');
     }
 
     public function down(Schema $schema): void
