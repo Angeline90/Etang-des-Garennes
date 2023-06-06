@@ -47,11 +47,16 @@ final class CreateImageAction extends AbstractController
     }
 
     
-    // #[Route('/app/cottage/{id}/add-card-image', name: 'app_images_cottage_card', methods: ['POST'])]
-    // public function addCottageBanner(Cottage $cottage, Request $request)
-    // {
-    //     $mediaObjet = $this-> __invoke($request);
-    //     $cottage->setCard();
-    //     $this->redirect
-    // }
+    #[Route('/app/cottage/{id}/add-img-card', name: 'app_images_cottage_card', methods: ['POST'])]
+    public function addCottageCard(Cottage $cottage, Request $request)
+    {
+        $mediaObject = $this->__invoke($request);
+        $this->manager->persist($mediaObject);
+        $cottage->setCard($mediaObject);
+        $this->manager->flush();
+
+
+        return $this->redirectToRoute('app_cottage_edit', ['id' => $cottage->getId()]);
+
+    }
 }

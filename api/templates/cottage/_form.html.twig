@@ -64,7 +64,13 @@
                 <form method="POST" action="{{ path('app_images_cottage_banner', {'id': cottage.id})}}" enctype="multipart/form-data">
                     <label class="form-label" for="price">Image de banière</label>
                     <input class="mb-4" type="file" name="file"/>
-                    <button class="btn-home btn-block mb-4" type="submit">Add</button>
+                    <button class="btn-home btn-block mb-4" type="submit">Ajouter</button>
+                </form>
+
+                <form method="POST" action="{{ path('app_images_cottage_card', {'id': cottage.id})}}" enctype="multipart/form-data">
+                    <label class="form-label" for="price">Image pour la carte</label>
+                    <input class="mb-4" type="file" name="file"/>
+                    <button class="btn-home btn-block mb-4" type="submit">Ajouter</button>
                 </form>
                
             </div>

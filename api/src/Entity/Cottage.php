@@ -14,6 +14,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: CottageRepository::class)]
 #[ApiResource(types: ['https://schema.org/Cottage'])]
+#[Vich\Uploadable]
 class Cottage
 {
     #[ORM\Id]
