@@ -37,9 +37,9 @@
 		{% include 'components/_footer.html.twig' %}
 
 	<script>
-    	const userId = {{ app.user ? app.user.id : null }};
+    	const userId = {{ is_granted('ROLE_USER') ? app.user.id : 'undefined' }};
     	const userName = "{{ app.user ? app.user.name : 'Anonymous' }}";
-    	const cottageId = {{ cottage is defined ? cottage.id : null }};
+    	const cottageId = {{ cottage is defined ? cottage.id : 'undefined' }};
 	</script>
 
 		

@@ -49,6 +49,7 @@ class Cottage
 
     #[ORM\Column(type: Types::TIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $departureTime = null;
+
     #[ORM\OneToOne(inversedBy: 'cottageBanner', cascade: ['persist', 'remove'])]
     private ?Image $banner = null;
 
@@ -207,6 +208,8 @@ class Cottage
     public function setArrivalTime(\DateTimeInterface $arrivalTime): self
     {
         $this->arrivalTime = $arrivalTime;
+    }
+
     public function getBanner(): ?Image
     {
         return $this->banner;
@@ -227,6 +230,8 @@ class Cottage
     public function setDepartureTime(\DateTimeInterface $departureTime): self
     {
         $this->departureTime = $departureTime;
+    }
+    
     public function getCard(): ?Image
     {
         return $this->card;

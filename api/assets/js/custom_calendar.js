@@ -1,6 +1,9 @@
 // console.log(userId)
 
 const calendarElement = document.getElementById("calendar");
+if (calendarElement){
+  
+
 calendarElement.classList.add("calendar");
 const jsonResponse = await fetch(
   `https://localhost/cottages/${cottageId}/bookings`,
@@ -47,6 +50,7 @@ const calendarInstance = new Calendar(calendarElement, {
 });
 
 calendarElement.addEventListener("addEvent.mdb.calendar", async (e) => {
+  console.log(e);
   const arrivalDate = new Date(
     e.event.start.date.split("/").reverse().join("-")
   ).toISOString();
@@ -74,3 +78,4 @@ calendarElement.addEventListener("addEvent.mdb.calendar", async (e) => {
   });
   console.log(data);
 });
+}
