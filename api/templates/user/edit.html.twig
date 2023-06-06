@@ -3,10 +3,19 @@
 {% block title %}Profil{% endblock %}
 
 {% block body %}
-    <h1>Editer mon profil</h1>
+<main class="my-5">
+    <section class="user-edit py-5">
+        <h1 class="text-center mb-3 font-weight-normal">Editer mon profil</h1>
 
-    {{ include('profile/_form.html.twig', {'button_label': 'Modifier'}) }}
+        {{ include('profile/_form.html.twig', {'button_label': 'Modifier'}) }}
 
-    <a href="{{ path('app_user_index') }}">Retour au profil</a>
+        <div class="container d-flex">
+            <a class="btn-home" href="{{ path('app_user_index') }}">Retour</a>
+            <a class="btn-home" href="{{ path('app_user_delete', {'id': user.id}) }}">Supprimer le compte</a>
+        </div>
+
+        
+    </section>
+</main>
 
 {% endblock %}

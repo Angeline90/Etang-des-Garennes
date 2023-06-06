@@ -16,21 +16,24 @@
 body {
     background-color: #D5E1DB;
     font-family: 'Montserrat Regular';
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 
 }
 
 h1 {
     font-family: 'Dancing script';
-    font-size: 3rem;
+    font-size: 3.5rem;
 }
 
 h2 {
-    font-family: 'Dancing script';
+    font-family: 'Montserrat Regular';
     font-size: 2.5rem;
 }
 
 h3 {
-    font-family: 'Montserrat Bold';
+    font-family: 'Montserrat Regular';
 }
 
 a p {
@@ -40,24 +43,31 @@ a p {
 }
 
 .navbar {
-    background-color: #84B8A0;
+    background-color: #D5E1DB;
+   
 }
+/* .navbar:not(.top-nav-collapse) {
+    background-color: transparent;
+}
+.navbar-scrolled {
+    background-color: #D5E1DB;
+} */
+
 .nav-link {
     color: black;
 }
+
 .nav-link:hover {
     color: black;
     text-decoration: underline;
 }
 
 .homeHeader {
-    height: 100vh;
-    /* filter: brightness(50%); */
+    height: 60vw;
     background-image: url('../images/pexels-paul-g-13615338.jpg');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    /* background-blend-mode: darken; */  
 }
 
 
@@ -87,6 +97,7 @@ a:hover {
     color: white;
 }
 
+
 .btn-home:hover {
     background-color: #84B8A0;
     border-color: #E0D5BF;
@@ -94,12 +105,25 @@ a:hover {
     
 }
 
-.cottages h2, h3, p {
+.btn-home:active,
+.btn-home:focus,
+.btn-home:active:focus {
+    background-color:  #2D6A4F;
+    border-color: #E0D5BF;
+    color: white;
+}
+
+.cottages h3, p {
     color: black;
 }
 
 .cottages a {
     color: white;
+}
+
+.fix-size {
+
+    height: 300px;
 }
   
 .encart {
@@ -111,28 +135,16 @@ a:hover {
     max-width: 500px;
 }
 
-.btn {
-    background-color: #2D6A4F;
-    border: solid #2D6A4F;
-    border-radius: 15px;
-    padding: 10px;
-    color: white;
+.paralax-bg {
+    background-image: url('../images/swan.jpg');
+    height: 400px;
 }
 
-.btn:hover {
-    background-color: #84B8A0;
-    border-color: #E0D5BF;
-    color: white;
-    
-}
 
-.btn:active,
-.btn:focus,
-.btn:active:focus {
-    background-color:  #2D6A4F;
-    border-color: #E0D5BF;
-    color: white;
-}
+
+
+
+
 
 
   

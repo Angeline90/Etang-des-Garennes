@@ -52,23 +52,30 @@
             <label class="form-label" for="capacity">Capacité</label>
         </div>
 
-        {% if cottage.id %}
-            <div class="container">
-                <div class="encart">
-                    <form method="POST" action="{{ path('app_images_cottage_banner', {'id': cottage.id})}}" enctype="multipart/form-data">
-                        <input type="file" name="file"/>
-                        <button class="btn-home" type="submit">Add</button>
-                    </form>
-                </div>
-            </div>
-        {% endif %}
-
-
 
         <!-- Submit button -->
         <button type="submit" class="btn-home btn-block mb-4">{{ button_label|default('Enregistrer') }}</button>
         {{ form_end(form) }}
-    </div>
 
+
+           {% if cottage.id %}
+            <div class="container encart">
+
+                <form method="POST" action="{{ path('app_images_cottage_banner', {'id': cottage.id})}}" enctype="multipart/form-data">
+                    <label class="form-label" for="price">Image de banière</label>
+                    <input class="mb-4" type="file" name="file"/>
+                    <button class="btn-home btn-block mb-4" type="submit">Ajouter</button>
+                </form>
+
+                <form method="POST" action="{{ path('app_images_cottage_card', {'id': cottage.id})}}" enctype="multipart/form-data">
+                    <label class="form-label" for="price">Image pour la carte</label>
+                    <input class="mb-4" type="file" name="file"/>
+                    <button class="btn-home btn-block mb-4" type="submit">Ajouter</button>
+                </form>
+               
+            </div>
+        {% endif %}
+        
+    </div>
    
 </div>

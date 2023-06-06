@@ -3,36 +3,51 @@
 {% block title %}Cottage{% endblock %}
 
 {% block body %}
-    <h1>Cottage</h1>
+<main class="my-5">
+    <section class="cottage-show py-5">
+        <h1 class="text-center mb-3 font-weight-normal">Cottage : {{ cottage.name }}</h1>
+        <div class="cottage-banner">
+        <img src="{{ vich_uploader_asset(cottage, 'image_file')}}"/>
+        </div>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ cottage.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ cottage.name }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ cottage.description }}</td>
-            </tr>
-            <tr>
-                <th>Prix</th>
-                <td>{{ cottage.price }} €</td>
-            </tr>
-            <tr>
-                <th>Capacité</th>
-                <td>{{ cottage.capacity }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ cottage.id }}</td>
+                </tr>
+                <tr>
+                    <th>Nom</th>
+                    <td>{{ cottage.name }}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ cottage.description }}</td>
+                </tr>
+                <tr>
+                    <th>Prix</th>
+                    <td>{{ cottage.price }} €</td>
+                </tr>
+                <tr>
+                    <th>Capacité</th>
+                    <td>{{ cottage.capacity }}</td>
+                </tr>
 
-    <a href="{{ path('app_cottage_index') }}">Retour à la liste</a>
+                <tr>
+                    <th>Actions</th>
+                    <td class="d-flex align-items-start">
+                        <a class="btn-home me-3" href="{{ path('app_cottage_edit', {'id': cottage.id}) }}">Modifier</a>
+                        {{ include('cottage/_delete_form.html.twig') }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 
-    <a href="{{ path('app_cottage_edit', {'id': cottage.id}) }}">Modifier</a>
+        <a class="btn-home" href="{{ path('app_cottage_index') }}">Retour à la liste</a>
 
-    {{ include('cottage/_delete_form.html.twig') }}
+        
+    
+    </section>
+</main>
+
 {% endblock %}

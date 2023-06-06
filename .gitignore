@@ -3,3 +3,5 @@
 !/helm/api-platform/charts/.gitignore
 
 /**/*Zone.Identifier
+api/templates/home/mdb.template.html
+api/migrations/Version20230602140723.php

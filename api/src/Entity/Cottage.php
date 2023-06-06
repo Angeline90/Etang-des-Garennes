@@ -14,6 +14,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: CottageRepository::class)]
 #[ApiResource(types: ['https://schema.org/Cottage'])]
+#[Vich\Uploadable]
 class Cottage
 {
     #[ORM\Id]
@@ -42,6 +43,12 @@ class Cottage
     #[ORM\OneToMany(mappedBy: 'cottage', targetEntity: Image::class)]
     #[ApiProperty(types: ['https://schema.org/image'])]
     private Collection $images;
+
+    #[ORM\OneToOne(inversedBy: 'cottageBanner', cascade: ['persist', 'remove'])]
+    private ?Image $banner = null;
+
+    #[ORM\OneToOne(inversedBy: 'cottageCard', cascade: ['persist', 'remove'])]
+    private ?Image $card = null;
 
     public function __construct()
     {
@@ -183,6 +190,30 @@ class Cottage
                 $image->setCottage(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getBanner(): ?Image
+    {
+        return $this->banner;
+    }
+
+    public function setBanner(?Image $banner): self
+    {
+        $this->banner = $banner;
+
+        return $this;
+    }
+
+    public function getCard(): ?Image
+    {
+        return $this->card;
+    }
+
+    public function setCard(?Image $card): self
+    {
+        $this->card = $card;
 
         return $this;
     }

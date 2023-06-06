@@ -71,6 +71,12 @@ class Image
     #[Assert\NotNull(groups: ['image_file_create'])]
     public ?File $file = null;
 
+    #[ORM\OneToOne(mappedBy: 'banner', cascade: ['persist', 'remove'])]
+    private ?Cottage $cottageBanner = null;
+
+    #[ORM\OneToOne(mappedBy: 'card', cascade: ['persist', 'remove'])]
+    private ?Cottage $cottageCard = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -120,6 +126,50 @@ class Image
     public function setContentUrl(?string $contentUrl): self
     {
         $this->contentUrl = $contentUrl;
+
+        return $this;
+    }
+
+    public function getCottageBanner(): ?Cottage
+    {
+        return $this->cottageBanner;
+    }
+
+    public function setCottageBanner(?Cottage $cottageBanner): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($cottageBanner === null && $this->cottageBanner !== null) {
+            $this->cottageBanner->setBanner(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($cottageBanner !== null && $cottageBanner->getBanner() !== $this) {
+            $cottageBanner->setBanner($this);
+        }
+
+        $this->cottageBanner = $cottageBanner;
+
+        return $this;
+    }
+
+    public function getCottageCard(): ?Cottage
+    {
+        return $this->cottageCard;
+    }
+
+    public function setCottageCard(?Cottage $cottageCard): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($cottageCard === null && $this->cottageCard !== null) {
+            $this->cottageCard->setCard(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($cottageCard !== null && $cottageCard->getCard() !== $this) {
+            $cottageCard->setCard($this);
+        }
+
+        $this->cottageCard = $cottageCard;
 
         return $this;
     }
