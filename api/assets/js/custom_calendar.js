@@ -29,6 +29,8 @@ const convertedEvents = bookings["hydra:member"].map((booking) => {
     color: {
       foreground: formattedArrivalDate && formattedDepartureDate ? "#f0f" : "#008000",
     },
+    disabled : true,
+    readonly : true,
   };
 });
 
