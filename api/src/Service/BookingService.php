@@ -38,13 +38,11 @@ class BookingService
             throw new HttpException(Response::HTTP_UNPROCESSABLE_ENTITY, 'Les dates ne sont pas correctes.');
         }
 
-        $bookings = $this->bookingRepository->getListForGivenPeriod($departureTime, $arrivalTime, $booking->getCottage());
-
+        $bookings = $this->bookingRepository->getListForGivenPeriod($arrivalTime, $departureTime, $booking->getCottage());
 
         if (count($bookings)) {
             throw new HttpException(Response::HTTP_UNPROCESSABLE_ENTITY, 'Ce créneau n\'est plus disponible.');
         }
-
 
         return $booking;
     }

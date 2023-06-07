@@ -47,20 +47,25 @@ class BookingRepository extends ServiceEntityRepository
      * @param string|DateTime $start
      * @param string|DateTime $end
      * @param Cottage|null $cottage
-     * @return void
+     * @return Booking[]
      */
     public function getListForGivenPeriod($start, $end, ?Cottage $cottage = null)
     {
         $qb = $this->createQueryBuilder('b')
-            ->andWhere('(b.arrivalDate <= :start AND b.departureDate >= :end) OR (b.arrivalDate <= :start AND b.departureDate <= :end) OR (b.arrivalDate >= :start AND b.departureDate >= :end) OR (b.departureDate >= :start AND b.departureDate <= :end)')
+            ->where('
+                (b.arrivalDate BETWEEN :start AND :end)
+                OR (b.departureDate BETWEEN :start AND :end)
+                OR (:start BETWEEN b.arrivalDate AND b.departureDate)
+                OR (:end BETWEEN b.arrivalDate AND b.departureDate)
+            ')
             ->setParameter('start', $start)
             ->setParameter('end', $end);
+
         if ($cottage) {
-            $qb->andWhere('b.cottage = :cottage')
-                ->setParameter('cottage', $cottage);
+            $qb->andWhere('b.cottage = :cottage')->setParameter('cottage', $cottage);
         }
-        return $qb->getQuery()
-            ->getResult();
+
+        return $qb->getQuery()->getResult();
     }
 
 
