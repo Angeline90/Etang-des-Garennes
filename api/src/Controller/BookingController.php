@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Booking;
 use App\Repository\BookingRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -31,6 +32,13 @@ class BookingController extends AbstractController
         return $this->render('booking/my_booking.html.twig', [
             'bookings' => $bookings,
         ]);
+    }
+
+    #[Route('/{id}/payment', name: 'payment'),IsGranted('ROLE_USER')]
+    public function payment(Booking $booking): Response 
+    {
+        dump($booking);
+        return $this->render('booking/payment.html.twig', ['booking' => $booking]);
     }
 
 }

@@ -6,7 +6,7 @@ if (calendarElement){
 
 calendarElement.classList.add("calendar");
 const jsonResponse = await fetch(
-  `https://localhost/cottages/${cottageId}/bookings`,
+  `https://localhost/cottages/${cottageId}/bookings?bookingState=/booking_states/7`,
   {
     method: "GET",
   }
@@ -63,10 +63,7 @@ calendarElement.addEventListener("addEvent.mdb.calendar", async (e) => {
     clients: ["/users/" + userId],
     arrivalDate: arrivalDate,
     departureDate: departureDate,
-    bookingState: "/booking_states/1",
     cottage: "/cottages/" + cottageId,
-    createdAt: new Date().toJSON(),
-    updatedAt: new Date().toJSON(),
   };
   const rawResponse = await fetch("https://localhost/bookings", {
     method: "POST",
@@ -76,6 +73,13 @@ calendarElement.addEventListener("addEvent.mdb.calendar", async (e) => {
     },
     body: JSON.stringify(data),
   });
-  console.log(data);
+  // console.log(rawResponse, await rawResponse.json());
+  if (rawResponse.status != 201){
+    console.log('Une erreur est survenue')
+  }
+  else {
+    window.location = `http://localhost/app/booking/${(await rawResponse.json()).id}/payment`;
+
+  }
 });
 }

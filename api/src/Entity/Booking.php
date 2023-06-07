@@ -2,20 +2,23 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Doctrine\Orm\Filter\DateFilter;
-use ApiPlatform\Metadata\ApiFilter;
-use ApiPlatform\Metadata\ApiResource;
-use ApiPlatform\Metadata\Delete;
 use ApiPlatform\Metadata\Get;
-use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Link;
 use ApiPlatform\Metadata\Post;
-use App\Controller\CreateBookingDurationAction;
-use App\Repository\BookingRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
+use ApiPlatform\Metadata\Patch;
+use ApiPlatform\Metadata\Delete;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Metadata\ApiFilter;
+use ApiPlatform\Metadata\ApiResource;
+use App\Repository\BookingRepository;
+use ApiPlatform\Metadata\GetCollection;
+use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Doctrine\Orm\Filter\DateFilter;
+use App\Controller\CreateBookingDurationAction;
+use Doctrine\Common\Collections\ArrayCollection;
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
+use App\Controller\ChargePaymentForBookingAction;
 
 #[ORM\Entity(repositoryClass: BookingRepository::class)]
 #[ApiResource(
@@ -24,11 +27,16 @@ use Doctrine\ORM\Mapping as ORM;
         new Get(),
         new GetCollection(),
         new Delete(),
-        new Post(controller: CreateBookingDurationAction::class)
+        new Post(controller: CreateBookingDurationAction::class),
+        new Patch(
+            uriTemplate: 'booking/{id}/payment/charge',
+            controller: ChargePaymentForBookingAction::class,
+        )
     ]
 )]
 #[ORM\HasLifecycleCallbacks(),]
 #[ApiFilter(DateFilter::class, properties: ['createdAt', 'arrivalDate', 'departureDate'])]
+#[ApiFilter(SearchFilter::class, properties: ['id' => 'exact', 'bookingState' => 'exact'])]
 #[ApiResource(
     uriTemplate: '/cottages/{id}/bookings',
     uriVariables: [
@@ -71,6 +79,9 @@ class Booking
     #[ORM\ManyToOne(inversedBy: 'bookings')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Cottage $cottage = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $stripe_payment = null;
 
     public function __construct()
     {
@@ -192,6 +203,23 @@ class Booking
     public function setCottage(?Cottage $cottage): self
     {
         $this->cottage = $cottage;
+
+        return $this;
+    }
+
+    public function getFormattedDuration(): int
+    {
+        return $this->duration->d;
+    }
+
+    public function getStripePayment(): ?string
+    {
+        return $this->stripe_payment;
+    }
+
+    public function setStripePayment(?string $stripe_payment): self
+    {
+        $this->stripe_payment = $stripe_payment;
 
         return $this;
     }
