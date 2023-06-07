@@ -3,21 +3,19 @@
 namespace App\Controller;
 
 use App\Entity\Booking;
+use App\Service\BookingService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Attribute\AsController;
-use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
-use Symfony\Component\Routing\Annotation\Route;
+
 
 #[AsController]
 final class CreateBookingDurationAction extends AbstractController
 {
     /** @param Booking $data */
-    public function __invoke($data) : Booking
+    public function __invoke($data, BookingService $bookingService): Booking
     {
-        $interval = $data->getArrivalDate()->diff($data->getDepartureDate());
-        $data->setDuration($interval);
-        return $data;
+        return $bookingService->create($data);
+
         //dd($data, $interval->days);
     }
 }

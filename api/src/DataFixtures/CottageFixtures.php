@@ -52,7 +52,7 @@ class CottageFixtures extends Fixture
     {
         foreach (self::COTTAGES as $key => $currentCottage) {
             $cottage = new Cottage();
-            $cottage->getOwners(17);
+            $cottage->getOwners();
             $cottage->setName($currentCottage['name']);
             $cottage->setDescription($currentCottage['description']);
             $cottage->setPrice($currentCottage['price']);

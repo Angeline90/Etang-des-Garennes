@@ -17,23 +17,27 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: BookingRepository::class)]
-#[ApiResource(mercure:true,
-    operations:[
+#[ApiResource(
+    mercure: true,
+    operations: [
         new Get(),
         new GetCollection(),
-        new Post(controller: CreateBookingDurationAction::class)])]
-#[ORM\HasLifecycleCallbacks(),]  
-#[ApiFilter(DateFilter::class, properties: ['createdAt','arrivalDate', 'departureDate'])] 
+        new Post(controller: CreateBookingDurationAction::class)
+    ]
+)]
+#[ORM\HasLifecycleCallbacks(),]
+#[ApiFilter(DateFilter::class, properties: ['createdAt', 'arrivalDate', 'departureDate'])]
 #[ApiResource(
-    uriTemplate: '/cottages/{id}/bookings', 
+    uriTemplate: '/cottages/{id}/bookings',
     uriVariables: [
         'id' => new Link(
             fromClass: Cottage::class,
             fromProperty: 'bookings'
         )
-    ], 
+    ],
     operations: [new GetCollection()]
-)]    
+)]
+
 class Booking
 {
     #[ORM\Id]

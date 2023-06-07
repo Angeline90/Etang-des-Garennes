@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Booking;
 use App\Entity\Cottage;
+use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -40,48 +41,51 @@ class BookingRepository extends ServiceEntityRepository
         }
     }
 
-    public function getListForGivenPeriod(string $start, string $end, ?Cottage $cottage = null)
+    /**
+     * Undocumented function
+     *
+     * @param string|DateTime $start
+     * @param string|DateTime $end
+     * @param Cottage|null $cottage
+     * @return void
+     */
+    public function getListForGivenPeriod($start, $end, ?Cottage $cottage = null)
     {
         $qb = $this->createQueryBuilder('b')
-            ->andWhere('b.arrivalDate < :end')
-            ->andWhere('b.departureDate > :start')
+            ->andWhere('(b.arrivalDate <= :start AND b.departureDate >= :end) OR (b.arrivalDate <= :start AND b.departureDate <= :end) OR (b.arrivalDate >= :start AND b.departureDate >= :end) OR (b.departureDate >= :start AND b.departureDate <= :end)')
             ->setParameter('start', $start)
-            ->setParameter('end', $end)
-            
-        ;
+            ->setParameter('end', $end);
         if ($cottage) {
             $qb->andWhere('b.cottage = :cottage')
-                ->setParameter('cottage', $cottage)
-            ;
+                ->setParameter('cottage', $cottage);
         }
-            return $qb->getQuery()
-            ->getResult()
-        ;
+        return $qb->getQuery()
+            ->getResult();
     }
 
 
-//    /**
-//     * @return Booking[] Returns an array of Booking objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('b')
-//            ->andWhere('b.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('b.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    //    /**
+    //     * @return Booking[] Returns an array of Booking objects
+    //     */
+    //    public function findByExampleField($value): array
+    //    {
+    //        return $this->createQueryBuilder('b')
+    //            ->andWhere('b.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->orderBy('b.id', 'ASC')
+    //            ->setMaxResults(10)
+    //            ->getQuery()
+    //            ->getResult()
+    //        ;
+    //    }
 
-//    public function findOneBySomeField($value): ?Booking
-//    {
-//        return $this->createQueryBuilder('b')
-//            ->andWhere('b.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    //    public function findOneBySomeField($value): ?Booking
+    //    {
+    //        return $this->createQueryBuilder('b')
+    //            ->andWhere('b.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
 }
