@@ -4,17 +4,13 @@
 
 {% block body %}
 
-<div class="card">
+
     <section class="profile-show py-5">
 
         <h1 class="text-center mb-3 font-weight-normal">Mon profil</h1>
-
+        <div class="card d-flex flex-column align-items-center">
         <table class="table">
             <tbody>
-                <tr>
-                    <th>Email</th>
-                    <td>{{ user.email }}</td>
-                </tr>
                 <tr>
                     <th>Nom</th>
                     <td>{{ user.name }}</td>
@@ -22,6 +18,10 @@
                 <tr>
                     <th>Prénom</th>
                     <td>{{ user.firstname }}</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>{{ user.email }}</td>
                 </tr>
                 <tr>
                     <th>Adresse</th>
