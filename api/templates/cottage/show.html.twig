@@ -7,7 +7,9 @@
     <section class="cottage-show py-5">
         <h1 class="text-center mb-3 font-weight-normal">Cottage : {{ cottage.name }}</h1>
         <div class="cottage-banner">
-        <img src="{{ vich_uploader_asset(cottage, 'image_file')}}"/>
+        {% if cottage.banner.path is defined %}
+        <img src="/images/{{ cottage.banner.path }}" alt="{{ cottage.name }}"/>
+        {% endif %}
         </div>
 
         <table class="table">

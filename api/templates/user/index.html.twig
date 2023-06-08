@@ -10,35 +10,35 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>Firstname</th>
+                    {# <th>Id</th> #}
+                    <th>Nom</th>
+                    <th>Prénom</th>
                     <th>Email</th>
-                    <th>Phone</th>
-                    <th>Adress</th>
+                    <th>Téléphone</th>
+                    <th>Adresse</th>
                     {# <th>Password</th>
-                    <th>IsVerified</th> #}
-                    <th>Roles</th>
+                    <th>IsVerified</th>
+                    <th>Roles</th> #}
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
             {% for user in users %}
                 <tr>
-                    <td>{{ user.id }}</td>
+                    {# <td>{{ user.id }}</td> #}
                     <td>{{ user.name }}</td>
                     <td>{{ user.firstname }}</td>
                     <td>{{ user.email }}</td>
                     <td>{{ user.phone }}</td>
                     <td>{{ user.adress }}</td>
-                    <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                    {# <td>{{ user.roles ? user.roles|json_encode : '' }}</td> #}
                     {#<td>{{ user.password }}</td>
                     <td>{{ user.isVerified ? 'Yes' : 'No' }}</td> #}
                     
                     
                     
                     <td class="d-flex flex-column">
-                        <a class="btn-home mb-3" href="{{ path('app_user_show', {'id': user.id}) }}">Voir (Réservations)</a>
+                        {# <a class="btn-home mb-3" href="{{ path('app_user_show', {'id': user.id}) }}">Voir (Réservations)</a> #}
                         <a class="btn-home mb-3" href="{{ path('app_user_edit', {'id': user.id}) }}">Modifier</a>
                         <a class="btn-home" href="{{ path('app_user_delete', {'id': user.id}) }}">Supprimer l'utilisateur</a>
                     </td> 
