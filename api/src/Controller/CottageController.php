@@ -35,6 +35,12 @@ class CottageController extends AbstractController
     #[Route('/show/{id}', name: 'app_cottage_id', methods: ['GET'])]
     public function showById(Request $request, Cottage $cottage, BookingRepository $bookingRepository): Response
     {
+        $error = $request->query->get('error');
+
+        if ($error) {
+            $this->addFlash('error', 'Ce créneau n\'est plus disponible');
+        }
+
         $start = $request->query->get('start', (new DateTime('first day of this month'))->format('Y-m-d'));
         $end = $request->query->get('end', (new DateTime('last day of this month'))->format('Y-m-d'));
         $bookings = $bookingRepository->getListForGivenPeriod($start,$end,$cottage);

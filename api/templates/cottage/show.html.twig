@@ -6,6 +6,7 @@
 
     <section class="cottage-show py-5">
         <h1 class="text-center mb-3 font-weight-normal">Cottage : {{ cottage.name }}</h1>
+    <div class="card">
         <div class="cottage-banner">
         {% if cottage.banner.path is defined %}
         <img src="/images/{{ cottage.banner.path }}" alt="{{ cottage.name }}"/>
@@ -54,6 +55,7 @@
         
     
     </section>
+    </div>
 
 
 {% endblock %}
