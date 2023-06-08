@@ -3,7 +3,7 @@
 {% block title %}Cottage{% endblock %}
 
 {% block body %}
-<main class="my-5">
+
     <section class="cottage-show py-5">
         <h1 class="text-center mb-3 font-weight-normal">Cottage : {{ cottage.name }}</h1>
         <div class="cottage-banner">
@@ -34,6 +34,10 @@
                     <th>Capacité</th>
                     <td>{{ cottage.capacity }}</td>
                 </tr>
+                <tr>
+                    <th>Image</th>
+                    <td>{{ cottage.banner.path }}</td>
+                </tr>
 
                 <tr>
                     <th>Actions</th>
@@ -50,6 +54,6 @@
         
     
     </section>
-</main>
+
 
 {% endblock %}

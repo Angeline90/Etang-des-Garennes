@@ -31,6 +31,7 @@ class CottageController extends AbstractController
         ]);
     }
 
+
     #[Route('/show/{id}', name: 'app_cottage_id', methods: ['GET'])]
     public function showById(Request $request, Cottage $cottage, BookingRepository $bookingRepository): Response
     {
@@ -62,6 +63,7 @@ class CottageController extends AbstractController
         ]);
     }
 
+
     #[
         Route('/new', name: 'app_cottage_new', methods: ['GET', 'POST']),
         IsGranted('ROLE_USER')
@@ -86,6 +88,7 @@ class CottageController extends AbstractController
         ]);
     }
 
+
     #[
         Route('/{id}', name: 'app_cottage_show', methods: ['GET']),
         IsGranted('ROLE_USER')
@@ -96,6 +99,7 @@ class CottageController extends AbstractController
             'cottage' => $cottage,
         ]);
     }
+
 
     #[
         Route('/{id}/edit', name: 'app_cottage_edit', methods: ['GET', 'POST']),
@@ -120,6 +124,7 @@ class CottageController extends AbstractController
         ]);
     }
 
+    
     #[
         Route('/{id}', name: 'app_cottage_delete', methods: ['POST']),
         IsGranted('ROLE_USER')
