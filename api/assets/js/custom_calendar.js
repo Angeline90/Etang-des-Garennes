@@ -22,7 +22,7 @@ const convertedEvents = bookings["hydra:member"].map((booking) => {
   );
 
   return {
-    summary: userName,
+    summary: 'Réservé',
     start: {
       date: formattedArrivalDate,
     },
@@ -30,10 +30,13 @@ const convertedEvents = bookings["hydra:member"].map((booking) => {
       date: formattedDepartureDate,
     },
     color: {
-      foreground: formattedArrivalDate && formattedDepartureDate ? "#f0f" : "#008000",
+      foreground: "#2D6A4F",
     },
-    disabled : true,
-    readonly : true,
+    color: {
+      background: "#84B8A0"
+    }
+    // disabled : true,
+    // readonly : true,
   };
 });
 
@@ -41,11 +44,11 @@ console.log(convertedEvents);
 
 const calendarInstance = new Calendar(calendarElement, {
   events: convertedEvents,
-  timepickerOptions: {
-    clearLabel: "Example Clear",
-  },
+  // timepickerOptions: {
+  //   clearLabel: "Example Clear",
+  // },
   datepickerOptions: {
-    okBtnText: "Example Ok",
+    okBtnText: "Réserver",
   },
 });
 
@@ -76,6 +79,8 @@ calendarElement.addEventListener("addEvent.mdb.calendar", async (e) => {
   // console.log(rawResponse, await rawResponse.json());
   if (rawResponse.status != 201){
     console.log('Une erreur est survenue')
+    // location.reload();
+    window.location.href=`/app/cottage/show/${cottageId}?error=indisponible`;
   }
   else {
     window.location = `http://localhost/app/booking/${(await rawResponse.json()).id}/payment`;
