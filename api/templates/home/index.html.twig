@@ -17,9 +17,7 @@
 
                 <div class="row text-center">
                     <div class="col-md-12 ps-5">
-                        <h1>Bienvenue à l'Etang des Garennes</h1>
-                        <p class="text-white pt-3">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <a href="{{path('app_booking_index')}}" class="text-white btn-home">Calendrier</a>
+                      <h1>Bienvenue à l'Etang des Garennes</h1>
                     </div>
                 </div>
             
@@ -117,34 +115,6 @@
       </div>
     </section>
 
-
-    {# <section class="cottages my-5">
-        <div class="container text-center">
-            <h2>Nos chambres</h2>
-
-            <div class="row my-5">
-            {% for cottage in cottages %}
-                <div class="col-md-12 col-lg-4 mb-4 mb-lg-0">
-                    <div class="card" style="background-color: white;">
-                        <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
-                            <img src="{{ asset('build/pexels-maria-orlova-4906407.jpg') }}" class="img-fluid" />
-                            <a href="{{ path('app_cottage_id', {'id': cottage.id}) }}">
-                            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
-                            </a>
-                        </div>
-                        <div class="card-body">
-                            <h3 class="card-title">{{ cottage.name }}</h3>
-                            <h4 class="card-subtitle">{{ cottage.price }}€</h4>
-                            <p class="card-text">{{ cottage.description }}</p>
-                            <a href="{{ path('app_cottage_id', {'id': cottage.id}) }}" class="btn-home">Voir</a>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-
-    </section> #}
-
     <section class="gallery my-5 text-center">
       <h2 class="mb-5">Nos chambres en photo</h2>
 
@@ -155,85 +125,90 @@
         hic.
       </p>
 
-      <div class="lightbox mx-5">
+       <div class="lightbox mx-5">
+        
         <div class="row g-0">
+
+
+          <div class="col-lg-4">
+              <img
+                src="{{ asset('build/pexels-tatiana-syrikova-3934054.jpg')}}"
+                alt="Lightbox image 1"
+                class="w-100"
+              />
+          </div>
+
           <div class="col-lg-4">
             <img
-              src="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(40).jpg"
-              data-mdb-img="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(40).jpg"
-              alt="Lightbox image 1"
-              class="w-100"
+                src="{{ asset('build/pexels-kate-stollery-2869499.jpg')}}"
+                alt="Lightbox image 2"
+                class="w-100"
             />
           </div>
+
+          <div class="col-lg-4">
+              <img
+                src="{{ asset('build/pexels-tatiana-syrikova-3932957.jpg')}}"
+                alt="Lightbox image 1"
+                class="w-100"
+              />
+            </div>
+            
+        </div>
+
+        <div class="row g-0">
+  
           <div class="col-lg-4">
             <img
-              src="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(147).jpg"
-              data-mdb-img="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(147).jpg"
-              alt="Lightbox image 2"
-              class="w-100"
-            />
-          </div>
-          <div class="col-lg-4">
-            <img
-              src="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(150).jpg"
-              data-mdb-img="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(150).jpg"
+              src="{{ asset('build/pexels-paul-g-13615276.jpg')}}"
               alt="Lightbox image 3"
               class="w-100"
             />
           </div>
-        </div>
-        <div class="row g-0">
+
           <div class="col-lg-4">
             <img
-              src="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(148).jpg"
-              data-mdb-img="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(148).jpg"
+              src="{{ asset('build/boat-house-cottage-waters-lake-65225.jpeg') }}"  
               alt="Lightbox image 1"
               class="w-100"
             />
           </div>
+        
           <div class="col-lg-4">
             <img
-              src="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(146).jpg"
-              data-mdb-img="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(146).jpg"
-              alt="Lightbox image 2"
-              class="w-100"
-            />
-          </div>
-          <div class="col-lg-4">
-            <img
-              src="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(145).jpg"
-              data-mdb-img="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(145).jpg"
-              alt="Lightbox image 3"
-              class="w-100"
-            />
-          </div>
-        </div>
-        <div class="row g-0">
-          <div class="col-lg-4">
-            <img
-              src="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(151).jpg"
-              data-mdb-img="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(40).jpg"
+              src="{{ asset('build/pexels-paul-g-13615338.jpg')}}"
               alt="Lightbox image 1"
               class="w-100"
             />
           </div>
+        </div>
+
+        <div class="row g-0">
           <div class="col-lg-4">
             <img
-              src="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(149).jpg"
-              data-mdb-img="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(149).jpg"
-              alt="Lightbox image 2"
+              src="{{ asset('build/swan.jpg')}}"
+              alt="Lightbox image 1"
               class="w-100"
             />
           </div>
+
+          <div class="col-lg-4">
+              <img
+                src="{{ asset('build/pexels-charlotte-may-5824497.jpg')}}"
+                alt="Lightbox image 1"
+                class="w-100"
+              />
+          </div>
+          
           <div class="col-lg-4">
             <img
-              src="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(41).jpg"
-              data-mdb-img="https://mdbootstrap.com/img/Photos/Lightbox/Original/img%20(41).jpg"
-              alt="Lightbox image 3"
+              src="{{ asset('build/pexels-photo-1795506.jpeg')}}"
+              alt="Lightbox image 1"
               class="w-100"
             />
           </div>
         </div>
+        
       </div>
     </section>
 
