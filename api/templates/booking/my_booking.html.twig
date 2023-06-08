@@ -4,12 +4,13 @@
 <table class="table">
         <thead>
             <tr>
-                <th>Clients</th>
-                <th>ArrivalDate</th>
-                <th>DepartureDate</th>
-                <th>Duration</th>
-                <th>CreatedAt</th>
-                <th>UpdatedAt</th>
+                <th>Nom et Prénom</th>
+                <th>Date d'arrivée</th>
+                <th>Date de départ</th>
+                <th>Durée du séjour</th>
+                {# <th>CreatedAt</th>
+                <th>UpdatedAt</th> #}
+                <th>Cottage</th>
             </tr>
         </thead>
         <tbody>
@@ -17,7 +18,7 @@
             <tr>
                 <td>
                 {% for client in booking.clients %}
-                    Nom : {{ client.name }} Prénom : {{ client.firstName }} / {{ client.email }}
+                    {{ client.name }} {{ client.firstName }} / {{ client.email }}
                     {% if not loop.last %}
                     {% endif %}
                 {% endfor %}
@@ -25,8 +26,8 @@
                 <td>{{ booking.arrivalDate ? booking.arrivalDate|date('d-m-Y H:i') : '' }}</td>
                 <td>{{ booking.departureDate ? booking.departureDate|date('d-m-Y H:i') : '' }}</td>
                 <td>{{ booking.duration ? booking.duration.format('%d nuit(s)') : '' }}</td>
-                <td>{{ booking.createdAt ? booking.createdAt|date('d-m-Y H:i') : '' }}</td>
-                <td>{{ booking.updatedAt ? booking.updatedAt|date('d-m-Y H:i') : '' }}</td>
+                {# <td>{{ booking.createdAt ? booking.createdAt|date('d-m-Y H:i') : '' }}</td>
+                <td>{{ booking.updatedAt ? booking.updatedAt|date('d-m-Y H:i') : '' }}</td> #}
             </tr>
         {% else %}
             <tr>

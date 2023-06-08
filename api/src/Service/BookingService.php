@@ -3,14 +3,18 @@
 namespace App\Service;
 
 use App\Entity\Booking;
+use App\Entity\BookingState;
 use App\Repository\BookingRepository;
+use App\Repository\BookingStateRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class BookingService
 {
-    public function __construct(private BookingRepository $bookingRepository)
-    {
+    public function __construct(
+        private BookingRepository $bookingRepository,
+        private BookingStateRepository $bookingStateRepository
+    ) {
     }
 
     function create(Booking $booking): Booking
@@ -43,6 +47,10 @@ class BookingService
         if (count($bookings)) {
             throw new HttpException(Response::HTTP_UNPROCESSABLE_ENTITY, 'Ce créneau n\'est plus disponible.');
         }
+
+        $bookingState = $this->bookingStateRepository->findOneBy(['state' => BookingState::WAITING_FOR_PAYMENT]);
+
+        $booking->setBookingState($bookingState);
 
         return $booking;
     }
