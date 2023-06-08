@@ -5,12 +5,15 @@
         <thead>
             <tr>
                 <th>Nom et Prénom</th>
+                <td>Email</td>
                 <th>Date d'arrivée</th>
                 <th>Date de départ</th>
                 <th>Durée du séjour</th>
+                <th>Prix du séjour</th>
+                <th>Cottage</th>
                 {# <th>CreatedAt</th>
                 <th>UpdatedAt</th> #}
-                <th>Cottage</th>
+                
             </tr>
         </thead>
         <tbody>
@@ -18,7 +21,14 @@
             <tr>
                 <td>
                 {% for client in booking.clients %}
-                    {{ client.name }} {{ client.firstName }} / {{ client.email }}
+                    {{ client.name }} {{ client.firstName }}
+                    {% if not loop.last %}
+                    {% endif %}
+                {% endfor %}
+                </td>
+                <td>
+                {% for client in booking.clients %}
+                    {{ client.email }}
                     {% if not loop.last %}
                     {% endif %}
                 {% endfor %}
@@ -26,6 +36,8 @@
                 <td>{{ booking.arrivalDate ? booking.arrivalDate|date('d-m-Y H:i') : '' }}</td>
                 <td>{{ booking.departureDate ? booking.departureDate|date('d-m-Y H:i') : '' }}</td>
                 <td>{{ booking.duration ? booking.duration.format('%d nuit(s)') : '' }}</td>
+                <td>{{ booking.cottage.price * booking.getFormattedDuration()}} €</td>
+                <td>{{ booking.cottage.name }}</td>
                 {# <td>{{ booking.createdAt ? booking.createdAt|date('d-m-Y H:i') : '' }}</td>
                 <td>{{ booking.updatedAt ? booking.updatedAt|date('d-m-Y H:i') : '' }}</td> #}
             </tr>
