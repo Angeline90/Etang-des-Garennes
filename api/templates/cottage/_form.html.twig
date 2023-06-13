@@ -1,0 +1,81 @@
+<div class="container">
+    <div class="encart">
+        {{ form_start(form) }}
+        <div class="class-errors">
+            {{ form_errors(form)}}
+        </div>
+        <!-- 2 column grid layout with text inputs for the first and last names -->
+        <div class="row mb-4">
+            <div class="col">
+                <div class="form-outline">
+                    {{ form_widget(form.name, {
+                        'attr': {
+                            'class': 'form-control',
+                            'id': 'name'
+                        }
+                    }) }}
+                    <label class="form-label" for="name">Nom</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Text input -->
+        <div class="form-outline mb-4">
+            {{ form_widget(form.description, {
+                'attr': {
+                    'class': 'form-control',
+                    'id': 'description'
+                }
+            }) }}
+            <label class="form-label" for="description">Description</label>
+        </div>
+
+        <!-- Number input -->
+        <div class="form-outline mb-4">
+            {{ form_widget(form.price, {
+                'attr': {
+                    'class': 'form-control',
+                    'id': 'price'
+                }
+            }) }}
+            <label class="form-label" for="price">Prix</label>
+        </div>
+
+        <!-- Number input -->
+        <div class="form-outline mb-4">
+            {{ form_widget(form.capacity, {
+                'attr': {
+                    'class': 'form-control',
+                    'id': 'capacity'
+                }
+            }) }}
+            <label class="form-label" for="capacity">Capacité</label>
+        </div>
+
+
+        <!-- Submit button -->
+        <button type="submit" class="btn-home btn-block mb-4">{{ button_label|default('Enregistrer') }}</button>
+        {{ form_end(form) }}
+
+
+           {% if cottage.id %}
+            <div class="container encart">
+
+                <form method="POST" action="{{ path('app_images_cottage_banner', {'id': cottage.id})}}" enctype="multipart/form-data">
+                    <label class="form-label" for="price">Image de banière</label>
+                    <input class="mb-4" type="file" name="file"/>
+                    <button class="btn-home btn-block mb-4" type="submit">Ajouter</button>
+                </form>
+
+                <form method="POST" action="{{ path('app_images_cottage_card', {'id': cottage.id})}}" enctype="multipart/form-data">
+                    <label class="form-label" for="price">Image pour la carte</label>
+                    <input class="mb-4" type="file" name="file"/>
+                    <button class="btn-home btn-block mb-4" type="submit">Ajouter</button>
+                </form>
+               
+            </div>
+        {% endif %}
+        
+    </div>
+   
+</div>

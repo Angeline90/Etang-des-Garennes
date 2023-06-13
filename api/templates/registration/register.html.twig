@@ -3,19 +3,114 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    {% for flash_error in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-    {% endfor %}
+   
+        <section class="register-form py-5">
+            <div class="container d-flex flex-column align-items-center">
+                {% for flash_error in app.flashes('verify_email_error') %}
+                    <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+                {% endfor %}
 
-    <h1>Register</h1>
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-success mt-4">
+                        {{ message }}
+                    </div>
+                {% endfor %}
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+                <h1 class="text-center mb-3">Inscription</h1>
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+                <div class="container">
+                    <div class="encart">
+                        {{ form_start(registrationForm) }}
+                        <div class="class-errors">
+                            {{ form_errors(registrationForm)}}
+                        </div>
+
+                        <!-- 2 column grid layout with text inputs for the first and last names -->
+                        <div class="row mb-4">
+                            <div class="col">
+                                <div class="form-outline">
+                                    {{ form_widget(registrationForm.firstname, {
+                                        'attr': {
+                                            'class': 'form-control',
+                                            'id': 'firstname'
+                                        }
+                                    }) }}
+                                    <label class="form-label" for="firstname">Prénom</label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-outline">
+                                    {{ form_widget(registrationForm.name, {
+                                        'attr': {
+                                            'class': 'form-control',
+                                            'id': 'name'
+                                        }
+                                    }) }}
+                                    <label class="form-label" for="name">Nom</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Email input -->
+                        <div class="form-outline mb-4">
+                            {{ form_widget(registrationForm.email, {
+                                'attr': {
+                                    'class': 'form-control',
+                                    'id': 'email'
+                                }
+                            }) }}
+                            <label class="form-label" for="email">Email</label>
+                        </div>
+
+                        <!-- password input -->
+                        <div class="form-outline mb-4">
+                            {{ form_widget(registrationForm.password.first, {
+                                'attr': {
+                                    'class': 'form-control',
+                                    'id': 'password'
+                                }
+                            }) }}
+                            <label class="form-label" for="password">Mot de passe</label>
+                        </div>
+
+                        <!-- password input -->
+                        <div class="form-outline mb-4">
+                            {{ form_widget(registrationForm.password.second, {
+                                'attr': {
+                                    'class': 'form-control',
+                                    'id': 'password2'
+                                }
+                            }) }}
+                            <label class="form-label" for="password2">Confirmer le mot de passe</label>
+                        </div>
+
+                        <!-- Text input -->
+                        <div class="form-outline mb-4">
+                            {{ form_widget(registrationForm.adress, {
+                                'attr': {
+                                    'class': 'form-control',
+                                    'id': 'adress'
+                                }
+                            }) }}
+                            <label class="form-label" for="adress">Adresse</label>
+                        </div>
+
+                        <!-- Number input -->
+                        <div class="form-outline mb-4">
+                            {{ form_widget(registrationForm.phone, {
+                                'attr': {
+                                    'class': 'form-control',
+                                    'id': 'phone'
+                                }
+                            }) }}
+                            <label class="form-label" for="phone">Téléphone</label>
+                        </div>
+
+                        <!-- Submit button -->
+                        <button type="submit" class="btn-home btn-block my-4">S'enregistrer</button>
+                        {{ form_end(registrationForm) }}
+                    </div>
+                </div>
+            </div>
+        </section>
 {% endblock %}

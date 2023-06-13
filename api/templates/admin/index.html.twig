@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% block title %}Page admin{% endblock %}
+
+{% block body %}
+
+    <section class="admin-dashboard py-5">
+        <h1 class="text-center mb-3 font-weight-normal">Gestion du gîte</h1>
+        <ul class="">
+            <li class="my-5"><a class="btn-home" href="{{ path('app_cottage_index') }}">Voir les gîtes  </a></li>
+            <li class="my-5"><a class="btn-home" href="{{ path('app_user_index') }}">  Voir les inscriptions  </a></li>
+            <li class="my-5"><a class="btn-home" href="{{ path('app_booking_index') }}">  Voir les réservations</a></li>
+        </ul>
+    </section>
+
+{% endblock %}
+

@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cottage index{% endblock %}
+
+{% block body %}
+
+
+
+    <section class="cottages-dashboard py-5">
+        <h1 class="text-center mb-3 font-weight-normal">Gestion des locations</h1>
+<div class="card d-flex flex-column align-items-center">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    {# <th>Id</th> #}
+                    <th>Nom</th>
+                    <th>Description</th>
+                    <th>Prix</th>
+                    <th>Capacité</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for cottage in cottages %}
+                <tr>
+                    {# <td>{{ cottage.id }}</td> #}
+                    <td>{{ cottage.name }}</td>
+                    <td>{{ cottage.description }}</td>
+                    <td>{{ cottage.price }} €</td>
+                    <td>{{ cottage.capacity }}</td>
+                    <td class="d-flex flex-column">
+                        <a class="btn-home mb-2" href="{{ path('app_cottage_show', {'id': cottage.id}) }}">Voir</a>
+                       
+                        <a class="btn-home" href="{{ path('app_cottage_edit', {'id': cottage.id}) }}">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6">Pas d'enregistrements trouvés</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="container d-flex">
+            <a class="btn-home me-3" href="{{ path('app_cottage_new') }}">Nouveau gîte</a>
+            {# <a class="btn-home" href="{{ path('app_admin') }}">Retour sur le dashbord</a> #}
+        </div>    
+    </section>
+
+    </div>
+
+{% endblock %}

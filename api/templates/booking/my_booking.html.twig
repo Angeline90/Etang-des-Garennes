@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<h1>Mes Réservations</h1>
+<div class="card">
+<table class="table">
+        <thead>
+            <tr>
+                <th>Nom et Prénom</th>
+                <td>Email</td>
+                <th>Date d'arrivée</th>
+                <th>Date de départ</th>
+                <th>Durée du séjour</th>
+                <th>Prix du séjour</th>
+                <th>Cottage</th>
+                {# <th>CreatedAt</th>
+                <th>UpdatedAt</th> #}
+                
+            </tr>
+        </thead>
+        <tbody>
+        {% for booking in bookings %}
+            <tr>
+                <td>
+                {% for client in booking.clients %}
+                    {{ client.name }} {{ client.firstName }}
+                    {% if not loop.last %}
+                    {% endif %}
+                {% endfor %}
+                </td>
+                <td>
+                {% for client in booking.clients %}
+                    {{ client.email }}
+                    {% if not loop.last %}
+                    {% endif %}
+                {% endfor %}
+                </td>
+                <td>{{ booking.arrivalDate ? booking.arrivalDate|date('d-m-Y H:i') : '' }}</td>
+                <td>{{ booking.departureDate ? booking.departureDate|date('d-m-Y H:i') : '' }}</td>
+                <td>{{ booking.duration ? booking.duration.format('%d nuit(s)') : '' }}</td>
+                <td>{{ booking.cottage.price * booking.getFormattedDuration()}} €</td>
+                <td>{{ booking.cottage.name }}</td>
+                {# <td>{{ booking.createdAt ? booking.createdAt|date('d-m-Y H:i') : '' }}</td>
+                <td>{{ booking.updatedAt ? booking.updatedAt|date('d-m-Y H:i') : '' }}</td> #}
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">Aucune réservation trouvée</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table> 
+    </div>
+
+    {% endblock %}

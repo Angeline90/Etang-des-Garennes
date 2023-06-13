@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Etang des Garennes{% endblock %}
+
+
+{% block body %}
+
+  {% for message in app.flashes('error') %}
+      <div class="alert alert-danger mt-4">
+          {{ message }}
+      </div>
+  {% endfor %}
+
+  <section class="cottageId p-5">
+    <div class="container text-center">
+        <h2 class="text-center mb-3 font-weight-normal">{{ cottage.name }}</h2>
+    </div>
+    <div class="row">
+      <div class="col-md-6 gx-5 mb-4">
+        <div class="bg-image hover-overlay ripple shadow-2-strong rounded-5" data-mdb-ripple-color="light">
+          <img src="{{ asset('build/pexels-maria-orlova-4906407.jpg') }}" class="img-fluid" />
+            <a href="#!">
+              <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+            </a>
+        </div>
+      </div>
+
+      <div class="col-md-6 gx-5 mb-4">
+        <h4>Description de la chambre</h4>
+        <p class="text-muted">{{ cottage.description}}</p>
+        <p class="text-muted">Capacité : {{ cottage.capacity}}</p>
+        <p class="text-muted">Prix par nuit : {{ cottage.price}} €</p>
+      </div>
+    </div>
+
+  </section>
+
+  {% include 'booking/_index.html.twig' %}
+
+{% endblock %}

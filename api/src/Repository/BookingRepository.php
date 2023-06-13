@@ -3,7 +3,11 @@
 namespace App\Repository;
 
 use App\Entity\Booking;
+use App\Entity\BookingState;
+use App\Entity\Cottage;
+use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query\Expr\Join;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -39,28 +43,61 @@ class BookingRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Booking[] Returns an array of Booking objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('b')
-//            ->andWhere('b.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('b.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * Undocumented function
+     *
+     * @param string|DateTime $start
+     * @param string|DateTime $end
+     * @param Cottage|null $cottage
+     * @return Booking[]
+     */
+    public function getListForGivenPeriod($start, $end, ?Cottage $cottage = null)
+    {
+        $qb = $this->createQueryBuilder('b')
+            ->innerJoin(BookingState::class, 'bs', Join::WITH, 'bs.id = b.bookingState')
+            ->where('
+                (b.arrivalDate BETWEEN :start AND :end)
+                OR (b.departureDate BETWEEN :start AND :end)
+                OR (:start BETWEEN b.arrivalDate AND b.departureDate)
+                OR (:end BETWEEN b.arrivalDate AND b.departureDate)
+            ')
+            ->andWhere('bs.state = :state')
+            ->setParameter('start', $start)
+            ->setParameter('end', $end)
+            ->setParameter('state', BookingState::VALIDATE);
 
-//    public function findOneBySomeField($value): ?Booking
-//    {
-//        return $this->createQueryBuilder('b')
-//            ->andWhere('b.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+        if ($cottage) {
+            $qb->andWhere('b.cottage = :cottage')->setParameter('cottage', $cottage);
+        }
+
+
+
+        return $qb->getQuery()->getResult();
+    }
+
+
+    //    /**
+    //     * @return Booking[] Returns an array of Booking objects
+    //     */
+    //    public function findByExampleField($value): array
+    //    {
+    //        return $this->createQueryBuilder('b')
+    //            ->andWhere('b.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->orderBy('b.id', 'ASC')
+    //            ->setMaxResults(10)
+    //            ->getQuery()
+    //            ->getResult()
+    //        ;
+    //    }
+
+    //    public function findOneBySomeField($value): ?Booking
+    //    {
+    //        return $this->createQueryBuilder('b')
+    //            ->andWhere('b.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
 }

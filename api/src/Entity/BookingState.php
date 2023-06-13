@@ -12,6 +12,8 @@ use Doctrine\ORM\Mapping as ORM;
 #[ApiResource]
 class BookingState
 {
+    public const VALIDATE='validate';
+    public const WAITING_FOR_PAYMENT='waiting for payment';
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
